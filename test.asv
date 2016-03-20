@@ -1,0 +1,55 @@
+#include "mex.h"
+#include "matrix.h"
+#include "stdio.h"
+
+int getFormat(char* string, int length);
+/* The gateway function */
+void mexFunction(int nlhs, mxArray *plhs[],
+                 int nrhs, const mxArray *prhs[])
+{
+    //break if to few args
+    if(nrhs<2)
+        mexErrMsgIdAndTxt("MMDF:test:prhs","Specify an input and output name.");
+ 
+    /* variable declarations here */   
+    double quality = 1.0;
+    char *out, *in;
+    int lengthIn = mxGetN(prhs[0]);
+    int lengthOut = mxGetN(prhs[1]);
+    
+    /* get mandatory arguments */
+    in = mxArrayToString(prhs[0]);
+    if(in == NULL)
+        mexErrMsgIdAndTxt("MMDF:test:prhs","Specify an input image name as first argument.");
+    out = mxArrayToString(prhs[1]);
+    if(out == NULL)
+        mexErrMsgIdAndTxt("MMDF:test:prhs","Specify an output image name as second argument.");   
+    
+    /* optional arguments */
+    if(nrhs == 3){ 
+        if(!mxIsDouble(prhs[2]))
+            mexErrMsgIdAndTxt("MMDF:test:prhs","Specify quality value in the range 0 to one.");   
+        quality = mxGetScalar(prhs[2]);
+    }
+    char buffer[128];
+    if(in)
+    snprintf(buffer, 128,"convert %s -quality %f %s", in, quality, out);
+    printf("%s\n",buffer);
+/* code here */
+}
+
+int getFormat(char* string, size_t length){
+    if(length<3)
+        return-1;
+    if(string[length-3]=='j'){
+        if(string[length-2]=='p'){
+            if(string[length-1]=='g')
+                return 1;
+            else if(string[length-1]=='2')
+                return 2;   
+        }else if(string[length-2]=='x'&&string[length-1]=='r')       
+            return 3;
+    }else if(string[length-3]=='b'&&string[length-2]=='m'&&string[length-1]=='p')      
+        return 0;
+    return -1;
+}
