@@ -7,7 +7,7 @@ int getFormat(char* string, size_t length);
 void mexFunction(int nlhs, mxArray *plhs[],
                  int nrhs, const mxArray *prhs[])
 {
-    //break if to few args
+    /*/break if to few args*/
     if(nrhs<2)
         mexErrMsgIdAndTxt("MMDF:test:prhs","Specify an input and output name.");
  
@@ -29,15 +29,15 @@ void mexFunction(int nlhs, mxArray *plhs[],
     
     /* optional arguments */
     
-    // get the quality level [0-1] to use or the quantisation[1-255]
+    /*/ get the quality level [0-1] to use or the quantisation[1-255]*/
     if(nrhs >= 3){ 
         quality = mxGetScalar(prhs[2]);
     }
-    // get the chrominance sub sampling value 0 for grayscale only 1 for max chrominance
+    /*/ get the chrominance sub sampling value 0 for grayscale only 1 for max chrominance*/
     if(nrhs >= 4){ 
         chrom = (int)mxGetScalar(prhs[3]);
     }
-    // get the overlap 0 = no overlap, 1 for overlap on 4x4 blocks , 2 for overlap on 16x16 blocks
+    /*/ get the overlap 0 = no overlap, 1 for overlap on 4x4 blocks , 2 for overlap on 16x16 blocks*/
     if(nrhs >= 5){   
          overlap = (int)mxGetScalar(prhs[4]);
     }

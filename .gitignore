@@ -50,3 +50,8 @@ res/test.jp2
 res/test0.jxr
 res/test.jpg
 res/test1.jxr
+*.jpg
+*.jp2
+*.jxr
+*~
+*.mexa64
