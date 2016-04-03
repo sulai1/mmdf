@@ -41,17 +41,25 @@ void mexFunction(int nlhs, mxArray *plhs[],
     if(nrhs >= 5){   
          overlap = (int)mxGetScalar(prhs[4]);
     }
-    char buffer[128];
+    char buffer[256];
     /* if one of the formats is jxr the jxrjib needs to be used */
     if(getFormat(out,mxGetN(prhs[1]))==3){
-        snprintf(buffer, 128,"convert %s tmp.bmp", in);
+        snprintf(buffer, 256,"convert %s tmp.bmp", in);
         system(buffer);
-        snprintf(buffer, 128,"JXREncApp -i tmp.bmp -o %s -q %f -c 0 -d %d -l %d",out,quality,chrom,overlap);
-    }else
-        snprintf(buffer, 128,"convert %s %s", in, out);
-    printf("%d : %f,%d,%d",nrhs , quality, chrom, overlap);
+        /*/FIXME: my binary was called JxrEncApp instead of JXREncApp */
+        snprintf(buffer, 256,"JxrEncApp -i tmp.bmp -o %s -q %f -c 0 -d %d -l %d",out,quality,chrom,overlap);
+    }
+    /* http://www.imagemagick.org/Usage/formats/#jpg */
+    else if(getFormat(out,mxGetN(prhs[1]))==2){
+        snprintf(buffer, 256,"convert %s -compress jpeg2000 -quality %f %s", in,quality, out);
+    }
+    else
+        snprintf(buffer, 256,"convert %s -quality %f %s", in,quality, out);
+    printf("%d : %f,%d,%d\n",nrhs , quality, chrom, overlap);
+    printf("%s\n",buffer);
     system(buffer);
-/* code here */
+    mxFree(in);
+    mxFree(out);
 }
 
 int getFormat(char* string, size_t length){
