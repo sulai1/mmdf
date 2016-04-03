@@ -44,8 +44,10 @@ void mexFunction(int nlhs, mxArray *plhs[],
     char buffer[256];
     /* if one of the formats is jxr the jxrjib needs to be used */
     if(getFormat(out,mxGetN(prhs[1]))==3){
-        snprintf(buffer, 256,"convert %s tmp.bmp", in);
-        system(buffer);
+       /* We should handle this in an higher level function  */
+       /* snprintf(buffer, 256,"convert %s tmp.bmp", in);
+        system(buffer); */
+           
         /*/FIXME: my binary was called JxrEncApp instead of JXREncApp */
         snprintf(buffer, 256,"JxrEncApp -i tmp.bmp -o %s -q %f -c 0 -d %d -l %d",out,quality,chrom,overlap);
     }
