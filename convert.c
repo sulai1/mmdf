@@ -49,6 +49,10 @@ void mexFunction(int nlhs, mxArray *plhs[],
         system(buffer); */
            
         snprintf(buffer, 256,"JxrEncApp -i tmp.bmp -o %s -q %f -c 0 -d %d -l %d",out,quality,chrom,overlap);
+    }else if(getFormat(out,mxGetN(prhs[1]))==3){
+        
+        /*/FIXME: my binary was called JxrEncApp instead of JXREncApp */
+        snprintf(buffer, 256,"JxrDecApp -i %s -o %s",in,out);
     }
     /* http://www.imagemagick.org/Usage/formats/#jpg */
     else if(getFormat(out,mxGetN(prhs[1]))==2){
