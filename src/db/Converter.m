@@ -51,7 +51,7 @@ classdef Converter
                         Converter.convertJXR(in,out,quality,bGrayscale);
                 end
             else 
-                error('Unsuportet conversion %s -> %s',in,out);
+                error('not supported conversion %s -> %s',in,out);
             end
         end
                     
