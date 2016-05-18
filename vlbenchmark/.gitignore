@@ -1,0 +1,13 @@
+*.swp
+*.DS_Store
+*.mexa64
+*.mexw32
+*.mexmaci
+*.mexmaci64
+*.mexglx
+*.m~
+data/
+junk/
+results/
+doc/html/*
+doc/demo/*
