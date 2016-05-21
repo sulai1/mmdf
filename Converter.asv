@@ -122,7 +122,7 @@ classdef Converter
         %it does not extend the given size. If the destination format is
         %not jpg the file is compressed back to lossless jpg so the
         %retrieval demo can handle it.
-        function avgSize = convertDB(srcDir,dstDir,srcFormat,dstFormat,sratio)
+        function  convertDB(srcDir,dstDir,srcFormat,dstFormat,sratio)
             mkdir(dstDir);
             names = dir(fullfile(srcDir, ['*.',srcFormat])) ;
             imagenames = {names.name};
@@ -147,17 +147,11 @@ classdef Converter
                    end
                end
             end
-            %%count non zeros and sum up
-            sum = 0;
-            count = 0;
             for i=1:nrimg
-                if sizes(i)~=0
-                    count = count +1;
-                end
-                sum = sum + sizes(i);
+                
             end
-            avgSize = sum/count;
         end
     end
+
 end
 
