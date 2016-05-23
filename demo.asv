@@ -1,6 +1,0 @@
-dataDir = 'vlbenchmark\vlbenchmarks\data\datasets'
-name = 'jxr_0.01';
-src = fullfile(dataDir,name);
-dstDir= fullfile(dataDir,name);
-,srcFormat,dstFormat,sratio
-Converter.convertDB(,);
