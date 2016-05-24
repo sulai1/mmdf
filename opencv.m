@@ -11,4 +11,3 @@ img = imread(imagePath);
 det = ORBDetector('nfeatures', 300000,'edge_threshold', 15, 'patchsize', 15 );
 
 [frames2, descriptors2] = det.extractFeatures(imagePath);
-[frames4, descriptors4] = vl_sift(single(rgb2gray(img)));
