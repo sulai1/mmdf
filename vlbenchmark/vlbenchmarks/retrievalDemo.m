@@ -22,8 +22,7 @@ import helpers.*
 
 % Define the features extractors which will be tested with the retrieval
 % benchmark.
-featExtractors{1} = SURFDetector('NOctaves',16,'NOctaveLayers',8, 'HessianThreshold', 500);
-featExtractors{2} = ORBDetector('nfeatures', 5000,'n_levels',16);
+featExtractors{1} = VlFeatSift();
 
 detNames = {'SURF', 'ORB'};
 
@@ -40,7 +39,7 @@ retBenchmark = RetrievalBenchmark('MaxNumImagesPerSearch',100);
 % from 5k images. In order to compute the results in a reasonable time, we
 % will select only subset of the images. Wrapper of this data/home/sulaiset uniformly
 % samples the subsetsxr
-name = 'oxbuild';
+name = 'test';
 respath = 'res';
 t = datetime('now');
 signature = [name,datestr(t,'mm.dd.yy.HH.MM.SS')];

@@ -1,12 +1,12 @@
 dataDir = 'vlbenchmark\vlbenchmarks\data\datasets\vggRetrievalDataset';
-name = 'jp2_0.3';
+name = 'jpg_0.06';
 
 dstDir= fullfile(dataDir,name);
-avgSize = Converter.convertDB(fullfile(dataDir,'oxbuild'),dstDir, 'jpg', 'jp2', 0.3);
+avgSize = Converter.convertDB(fullfile(dataDir,'oxbuild'),dstDir, 'jpg', 'jpg', 0.06);
 
 fid = fopen('sizes.txt', 'at');
-fprintf(fid, '%s %f', name, avgSize);
-fclose('sizes.txt'); 
+fprintf(fid, '%s %f\n', name, avgSize);
+fclose(fid); 
 
 gtDir = [dstDir,'_gt'];
 mkdir(gtDir);
