@@ -1,0 +1,34 @@
+                           VLBenchmakrs
+                         Version 1.0-beta
+              Karel Lenc   Varun Gulshan   Andrea Vedaldi
+
+
+This package implements a collection of benchmkark routines to evaluate
+local feature detectors and descriptors. See
+http://www.vlfeat.org/benchmarks/index.html or the bundled copy
+doc/index.html for installation and usage instructions.
+
+CHANGES
+
+v1.0-beta  (5-10-2012) First public release.
+
+ACKNOWLEDGMENTS
+    This project was supported by the PASCAL Harvest Programme 2012.
+
+    Part of the package is based on code of Krystian Mikolajczyk
+    as available here: http://www.robots.ox.ac.uk/~vgg/research/affine/.
+
+    The authors would like to thank Andrew Zisserman, Jiri Matas,
+    Krystian Mikolajczyk, Tinne Tuytelaars, and Cordelia Schmid for
+    helpful discussion and supports.
+
+REFERENCES
+
+[1] K. Mikolajczyk, T. Tuytelaars, C. Schmid, A. Zisserman,
+    J. Matas, F. Schaffalitzky, T. Kadir, and L. Van Gool. A
+    comparison of affine region detectors. IJCV, 1(65):43–72, 2005.
+
+[2] H. Jegou, M. Douze and C. Schmid,
+    Exploiting descriptor distances for precise image search,
+    Research report, INRIA 2011
+    http://hal.inria.fr/inria-00602325/PDF/RA-7656.pdf

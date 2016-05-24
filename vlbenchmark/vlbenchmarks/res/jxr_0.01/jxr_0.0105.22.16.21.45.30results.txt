@@ -1,0 +1,14 @@
+jxr_0.01 :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;jxr_0.01;Inf;Inf;100;100;1;true
+	SURF detector :	HessianThreshold;NOctaves;NOctaveLayers;Extended;UpRight;100;4;2;1;0
+		1.323794e-01 mAP. 
+		4.654037e+03 Avg. #Descs. 
+		2.449436e+03 Avg. #Query Descs
+	VLFeat SIFT :
+		7.106726e-01 mAP. 
+		3.119697e+03 Avg. #Descs. 
+		1.264855e+03 Avg. #Query Descs
+	SURF detector :	nfeatures;scalefactor;n_levels;edge_threshold;first_level;wta_k;patchsize;500;1.2;8;31;0;2;31
+		3.198610e-01 mAP. 
+		4.987553e+02 Avg. #Descs. 
+		2.712727e+02 Avg. #Query Descs
+

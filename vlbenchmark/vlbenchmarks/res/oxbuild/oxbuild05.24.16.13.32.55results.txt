@@ -1,0 +1,14 @@
+oxbuild :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;oxbuild;Inf;Inf;100;100;1;true
+	SURF detector :	HessianThreshold;NOctaves;NOctaveLayers;Extended;UpRight;100;4;2;1;0
+		1.347882e-01 mAP. 
+		5.050275e+03 Avg. #Descs. 
+		2.650145e+03 Avg. #Query Descs
+	VLFeat SIFT :
+		7.555267e-01 mAP. 
+		2.805326e+03 Avg. #Descs. 
+		1.116018e+03 Avg. #Query Descs
+	ORB detector :	nfeatures;scalefactor;n_levels;edge_threshold;first_level;wta_k;patchsize;10000;1.2;8;31;0;2;31
+		5.175129e-01 mAP. 
+		8.941464e+03 Avg. #Descs. 
+		5.272255e+03 Avg. #Query Descs
+

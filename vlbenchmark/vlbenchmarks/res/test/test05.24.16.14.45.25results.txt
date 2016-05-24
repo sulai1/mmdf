@@ -1,0 +1,10 @@
+test :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;test;Inf;Inf;30;30;1;true
+	SURF detector :	HessianThreshold;NOctaves;NOctaveLayers;Extended;UpRight;50;8;2;1;0
+		4.440567e-01 mAP. 
+		5.951692e+03 Avg. #Descs. 
+		2705 Avg. #Query Descs
+	ORB detector :	nfeatures;scalefactor;n_levels;edge_threshold;first_level;wta_k;patchsize;5000;1.2;16;31;0;2;31
+		8.014694e-01 mAP. 
+		4.520103e+03 Avg. #Descs. 
+		3128 Avg. #Query Descs
+
