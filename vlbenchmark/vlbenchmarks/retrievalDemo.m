@@ -27,7 +27,7 @@ featExtractors{1} = VlFeatSift();
 
 featExtractors{2} = SURFDetector('HessianThreshold', 500);
 
-featExtractors{3} = ORBDetector('NFeatures', 10000);
+featExtractors{3} = ORBDetector('NFeatures', 3000);
 detNames = {'SIFT','SURF', 'ORB'};
 
 % Define the benchmark class. This implements simple retrieval system which

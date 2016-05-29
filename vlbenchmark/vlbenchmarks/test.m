@@ -1,5 +1,7 @@
 
-det1 = localFeatures.ORBDetector('NFeatures', 10000);
+
+
+det1 = localFeatures.ORBDetector('NFeatures', 3000);
 [f1,d1] = det1.extractFeatures('test.jpg');
 
 det2 = localFeatures.VlFeatSift();
@@ -8,3 +10,7 @@ det2 = localFeatures.VlFeatSift();
 
 det3 = localFeatures.SURFDetector('HessianThreshold', 500);
 [f3,d3] = det3.extractFeatures('test.jpg');
+
+import cv.*
+
+[d4,f4] = FREAK(uint8(rgb2gray(imread('test.jpg'))));
