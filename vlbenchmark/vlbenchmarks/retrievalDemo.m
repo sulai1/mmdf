@@ -22,9 +22,13 @@ import helpers.*
 
 % Define the features extractors which will be tested with the retrieval
 % benchmark.
+
 featExtractors{1} = VlFeatSift();
 
-detNames = {'SURF', 'ORB'};
+featExtractors{2} = SURFDetector('HessianThreshold', 500);
+
+featExtractors{3} = ORBDetector('NFeatures', 10000);
+detNames = {'SIFT','SURF', 'ORB'};
 
 % Define the benchmark class. This implements simple retrieval system which
 % uses extracted features in a K-Nearest Neighbour search in order to
@@ -39,7 +43,7 @@ retBenchmark = RetrievalBenchmark('MaxNumImagesPerSearch',100);
 % from 5k images. In order to compute the results in a reasonable time, we
 % will select only subset of the images. Wrapper of this data/home/sulaiset uniformly
 % samples the subsetsxr
-name = 'test';
+name = 'oxbuild';
 respath = 'res';
 t = datetime('now');
 signature = [name,datestr(t,'mm.dd.yy.HH.MM.SS')];

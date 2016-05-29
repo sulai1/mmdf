@@ -1,13 +1,10 @@
-addpath('/home/sulai/Desktop/mexopencv-2.4');
-addpath('/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/software/vlfeat/vlfeat-0.9.16')
-addpath('vlbenchmark/vlbenchmarks/');
-import cv.*;
-import localFeatures.*;
+clear all
 
-imagePath = fullfile('vlbenchmark','vlbenchmarks','data','datasets',...
-    'vggRetrievalDataset','oxbuild','all_souls_000001.jpg');
-img = imread(imagePath);
+import localfeatures.*
+addpath('vlbenchmarks/vlbenchmark/data')
 
-det = ORBDetector('nfeatures', 300000,'edge_threshold', 15, 'patchsize', 15 );
+det1 = localFeatures.CVDetector('MaxFeatures',3400);
+[f1,d1] = det1.extractFeatures('vlbenchmark/vlbenchmarks/test.jpg');
 
-[frames2, descriptors2] = det.extractFeatures(imagePath);
+det2 = localFeatures.VlFeatSift();
+[f2,d2] = det2.extractFeatures('vlbenchmark/vlbenchmarks/test.jpg');
