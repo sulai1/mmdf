@@ -22,10 +22,13 @@ import helpers.*
 
 % Define the features extractors which will be tested with the retrieval
 % benchmark.
-featExtractors{1} = SURFDetector('NOctaves',16,'NOctaveLayers',8, 'HessianThreshold', 500);
-featExtractors{2} = ORBDetector('nfeatures', 5000,'n_levels',16);
 
-detNames = {'SURF', 'ORB'};
+featExtractors{1} = VlFeatSift();
+
+featExtractors{2} = SURFDetector('HessianThreshold', 500);
+
+featExtractors{3} = ORBDetector('NFeatures', 3000);
+detNames = {'SIFT','SURF', 'ORB'};
 
 % Define the benchmark class. This implements simple retrieval system which
 % uses extracted features in a K-Nearest Neighbour search in order to
