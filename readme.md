@@ -1,5 +1,5 @@
 #Project description
-This projects purpose is to test the influence of compression on image retrieval tasks. Therefore it runs a retrievalbenchmark on both the uncompressed and compressed datasets and compares the results. Supported compressions are JPEG, JPEG 2000 and JPEG XR and the used benchmark is a modified retrieval benchmark from the vlbenchmark project that uses different feature detectors. 
+This projects purpose is to test the influence of compression on image retrieval tasks using Matlab. Therefore it runs a retrievalbenchmark on both the uncompressed and compressed datasets and compares the results. Supported compressions are JPEG, JPEG 2000 and JPEG XR and the used benchmark is a modified retrieval benchmark from the vlbenchmark project that uses different feature detectors. 
 ##Setup instructions
 The project contains of two parts the **converter** and the **benchmark**. They are completely seperate applications so they can run on different systems. In this setup the **converter** is compiled on Windows 10 with Visual Studio 2015 and the **benchmark** is compiled for linux, because it depends on libraries (YAEL) that are not compatible with Windows. So in this case u have to convert the database and copy it to the linux system(or use a virtual box and do everithing with a shared folder) and then run the benchmark with the converted dataset.
 
@@ -81,3 +81,7 @@ Important files that are modified or created in the vlbenchmark are:
 - +localfeatures/SURFDetector
 - +localfeatures/PHOWDetector
 ```
+###Workflow
+- use the Converter.convertDB to generate the compressed dataset(look at the ConverterDemo.m script for details). You have to specify a source, target format and the compression ratio. The function generates two folders. One contains the images(called **Format**_**Ratio**) and the other containes the querries(called **Format**_**Ratio**_gt), eg. jpg_0.1 and jpg_0.1_gt.
+- copy the files(if not allready in the right place) to the folder where vlbenchmark stores its datasets(vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset);
+- run the retrievalBenchmark and pass it the name of the dataset. The results will be stored in a subfolder called res.
