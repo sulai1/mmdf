@@ -82,6 +82,6 @@ Important files that are modified or created in the vlbenchmark are:
 - +localfeatures/PHOWDetector
 ```
 ###Workflow
-- use the Converter.convertDB to generate the compressed dataset(look at the ConverterDemo.m script for details). You have to specify a source, target format and the compression ratio. The function generates two folders. One contains the images(called **Format**_**Ratio**) and the other containes the querries(called **Format**_**Ratio**_gt), eg. jpg_0.1 and jpg_0.1_gt.
+- use the Converter.convertDB to generate the compressed dataset(look at the ConverterDemo.m script for details). You have to specify a source, target format and the compression ratio. The function generates two folders. One contains the images(called **Format_Ratio**) and the other containes the querries(called **Format_Ratio**_gt), eg. jpg_0.1 and jpg_0.1_gt.
 - copy the files(if not allready in the right place) to the folder where vlbenchmark stores its datasets(vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset);
 - run the retrievalBenchmark and pass it the name of the dataset. The results will be stored in a subfolder called res.
