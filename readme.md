@@ -2,7 +2,7 @@
 ###Install ImageMagick
 Download and install ImageMagick from http://www.imagemagick.org/script/binary-releases.php.
 I used the <ImageMagick-6.9.3-7-Q16-x64-dll.exe> for windows 10 which provides an installer.
-Follow installation instruction.
+Follow installation instruction and add it to the PATH variable so its visible to the application.
 ###Install JXRLIB
  Dowlnoad jxrlib from https://jxrlib.codeplex.com/. Next unpack the files. Its a source distribution and you need to compile them yourself. There are to ways to do this. 
 1. open the visual studio solution located in the  <jxrencoderdecoder> folder and simply compile it with  visual studio.
