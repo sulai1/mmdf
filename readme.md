@@ -1,4 +1,7 @@
+#Project description
+This projects purpose is to test the influence of compression on image retrieval tasks. Therefore it runs a retrievalbenchmark on both the uncompressed and compressed datasets and compares the results. Supported compressions are JPEG, JPEG 2000 and JPEG XR and the used benchmark is a modified retrieval benchmark from the vlbenchmark project that uses different feature detectors. 
 ##Setup instructions
+The project contains of two parts the **converter** and the **benchmark**. They are completely seperate applications so they can run on different systems. In this setup the **converter** is compiled on Windows 10 with Visual Studio 2015 and the **benchmark** is compiled for linux, because it depends on libraries (YAEL) that are not compatible with Windows. So in this case u have to convert the database and copy it to the linux system(or use a virtual box and do everithing with a shared folder) and then run the benchmark with the converted dataset.
 
 ###Install ImageMagick
 Download and install ImageMagick from http://www.imagemagick.org/script/binary-releases.php.
@@ -6,11 +9,15 @@ I used the <ImageMagick-6.9.3-7-Q16-x64-dll.exe> for windows 10 which provides a
 Follow installation instruction and add it to the PATH variable so its visible to the application.
 
 ###Install JXRLIB
+
  Dowlnoad jxrlib from https://jxrlib.codeplex.com/. Next unpack the files. Its a source distribution and you need to compile them yourself. There are to ways to do this. 
+        
+ ```
 1. open the visual studio solution located in the  <jxrencoderdecoder> folder and simply compile it with  visual studio.
 2. Compile it with the makefile located  in the root
-I used the first method.
-Add Path variables
+```
+       
+>Add Path variables
 For the jxrlib the executables should be located in the folder or in a subfolder where it was compiled. There should be two executables. One is called “JXREncApp” and one called “JXRDecApp”. Copy them to the installation directory of ImageMagick where the other needed executables like “convert” are located. Now we can set the Path environment variable to the installation directory of image magick and it will find all the programs needed for compression. So simply add the path of the installation directory to the path environment variable.
 
 ###Use of applications
@@ -65,3 +72,12 @@ The converter is a seperate application, that wraps ImageMagick and the JXRLIB t
 
 ###Benchmark
 The vlbenchmark has been modified to accept custom datasets. The datasets need to be similar to the oxbuild dataset. The benchmark now also stores the results to files that are labeled with their name and the date, in a folder thats labeled with the name of the dataset. There are also new FeatureDetectors that are located in the same folder as the vlbenchmark detectors. To implement a new one modify the ExampleLocalFeatureExtractor class or if you want to implement a detector thats using opencv inherit the CVDetector, that provides helpers vor opencv feature detectors, and implement the abstract methods, properties and call the super constructor. For an example look at the ORBDetector.
+```
+Important files that are modified or created in the vlbenchmark are:
+- retrievaldemo
+- +datasetsVggRetrievalDataset
+- +localfeatures/CVDetector
+- +localfeatures/ORBDetector
+- +localfeatures/SURFDetector
+- +localfeatures/PHOWDetector
+```
