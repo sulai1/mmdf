@@ -1,0 +1,14 @@
+oxbuild :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;oxbuild;Inf;Inf;30;30;1;true
+	VLFeat SIFT :
+		7.732782e-01 mAP. 
+		2.817045e+03 Avg. #Descs. 
+		1.116018e+03 Avg. #Query Descs
+	SURF :	HessianThreshold;NOctaves;NOctaveLayers;50;8;4
+		7.344799e-01 mAP. 
+		8.608927e+03 Avg. #Descs. 
+		4.366236e+03 Avg. #Query Descs
+	ORB :	NFeatures;ScaleFactor;NLevels;EdgeThreshold;WTA_K;PatchSize;10000;1.1;16;128;2;128
+		4.217658e-01 mAP. 
+		6.280112e+03 Avg. #Descs. 
+		4.251927e+03 Avg. #Query Descs
+

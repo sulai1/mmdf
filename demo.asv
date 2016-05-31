@@ -1,0 +1,22 @@
+dataDir = 'vlbenchmark\vlbenchmarks\data\datasets\vggRetrievalDataset';
+name = 'jpg_0.06';
+
+steps = 5;
+min = 0.03;
+max = 0.8;
+linspace(min,max,steps)
+
+name = sprintf('jpg';
+for i=1:steps
+
+    dstDir= fullfile(dataDir,name);
+    avgSize = Converter.convertDB(fullfile(dataDir,'oxbuild'),dstDir, 'jpg', 'jpg', 0.06);
+
+    fid = fopen('sizes.txt', 'at');
+    fprintf(fid, '%s %f\n', name, avgSize);
+    fclose(fid); 
+
+    gtDir = [dstDir,'_gt'];
+    mkdir(gtDir);
+    copyfile(fullfile(dataDir,'oxbuild_gt/*'), gtDir);
+end

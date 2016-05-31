@@ -1,0 +1,14 @@
+test :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;test;Inf;Inf;30;30;1;true
+	VLFeat SIFT :
+		8.623323e-01 mAP. 
+		2.738673e+03 Avg. #Descs. 
+		885 Avg. #Query Descs
+	SURF :	HessianThreshold;NOctaves;NOctaveLayers;300;4;2
+		7.702387e-01 mAP. 
+		3558 Avg. #Descs. 
+		1.815500e+03 Avg. #Query Descs
+	ORB :	NFeatures;ScaleFactor;NLevels;EdgeThreshold;WTA_K;PatchSize;5000;1.2;8;31;2;31
+		7.708407e-01 mAP. 
+		4.860904e+03 Avg. #Descs. 
+		3.320500e+03 Avg. #Query Descs
+

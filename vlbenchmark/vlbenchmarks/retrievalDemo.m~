@@ -25,14 +25,13 @@ import helpers.*
 
 featExtractors{1} = VlFeatSift();
 
-featExtractors{2} = SURFDetector('HessianThreshold', 100, 'NOctaves', 8, ...
+featExtractors{2} = SURFDetector('HessianThreshold', 50, 'NOctaves', 8, ...
     'NOctaveLayers', 4);
 
-featExtractors{3} = ORBDetector('NFeatures', 3500, 'ScaleFactor', 1.4, 'NLevels', 16);
+featExtractors{3} = ORBDetector('NFeatures', 10000, 'ScleFactor', 1.1, ...
+    'NLevels',16,'PatchSize', 128, 'EdgeThreshold', 128);
 
-featExtractors{4} = PHOWDetector();
-
-detNames = {'SIFT','SURF', 'ORB', 'PHOW'};
+detNames = {'SIFT','SURF', 'ORB'};
 
 % Define the benchmark class. This implements simple retrieval system which
 % uses extracted features in a K-Nearest Neighbour search in order to
@@ -47,7 +46,7 @@ retBenchmark = RetrievalBenchmark('MaxNumImagesPerSearch',100);
 % from 5k images. In order to compute the results in a reasonable time, we
 % will select only subset of the images. Wrapper of this data/home/sulaiset uniformly
 % samples the subsetsxr
-name = 'test';
+name = 'oxbuild';
 respath = 'res';
 t = datetime('now');
 signature = [name,datestr(t,'mm.dd.yy.HH.MM.SS')];

@@ -4,7 +4,7 @@ classdef CVDetector < helpers.GenericInstaller ...
     % implement abstract methods and properties and the constructor to add
     % the functionality.
     
-  properties (Static)
+  properties (Constant)
         CVPATH = '/home/sulai/Desktop/mexopencv-2.4';
   end
   
@@ -61,7 +61,8 @@ classdef CVDetector < helpers.GenericInstaller ...
       % descriptors as well.
       [frames descriptors] = obj.loadFeatures(imagePath,nargout > 1);
       % If features loaded, we are done
-      %if numel(frames) > 0; return; end;
+      
+      if numel(frames) > 0; return; end;
       % Get the size of the image
       
       
@@ -79,7 +80,7 @@ classdef CVDetector < helpers.GenericInstaller ...
     function opts = argparse(obj, varargin)
        opts = obj.Opts;
        names = fieldnames(opts);
-       for i=1:2:nargin
+       for i=1:2:length
            name = varargin{1}{i};
            for j=1:length(names)
                if strcmp(name,names{j})
@@ -89,7 +90,8 @@ classdef CVDetector < helpers.GenericInstaller ...
        end
     end
     
-    % convert frames and descriptors from opencv fram
+    % convert frames and descriptors from opencv frame structs to a double
+    % matrix like it is used from vlfeat.
     function [frames descriptors] = cv2vlFrames(obj,f, d)
       nframes = length(f);
       frames = zeros(4,nframes);
@@ -102,8 +104,8 @@ classdef CVDetector < helpers.GenericInstaller ...
       descriptors = transpose(d);
     end
     
+    % extract the descriptors and convert them
     function [frames descriptors] = extractDescriptors(obj, imagePath, frames)
-      import cv.*;
       [f, d] = obj.extract(imagePath);
       [frames descriptors] = obj.cv2vlFrames(f,d);
       
