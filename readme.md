@@ -9,7 +9,7 @@ Install JXRLIB
 2. Compile it with the makefile located  in the root
 I used the first method.
 Add Path variables
-For the jxrlib the executables should be located in the folder or in a subfolder where it was compiled. There should be two executables. One is called ìJXREncAppî and one called ìJXRDecAppî. Copy them to the installation directory of ImageMagick where the other needed executables like ìconvertî are located. Now we can set the Path environment variable to the installation directory of image magick and it will find all the programs needed for compression. So simply add the path of the installation directory to the path environment variable.
+For the jxrlib the executables should be located in the folder or in a subfolder where it was compiled. There should be two executables. One is called ‚ÄúJXREncApp‚Äù and one called ‚ÄúJXRDecApp‚Äù. Copy them to the installation directory of ImageMagick where the other needed executables like ‚Äúconvert‚Äù are located. Now we can set the Path environment variable to the installation directory of image magick and it will find all the programs needed for compression. So simply add the path of the installation directory to the path environment variable.
 Use of applications
 Now that the programs are known u can test them from the command line and in the following two chapters I will briefly introduce the commands and the parameters we might use, for further details look at the documentation. 
 Use of JXRLIB
