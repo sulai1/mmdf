@@ -32,7 +32,9 @@ featExtractors{3} = ORBDetector('NFeatures', 3500, 'ScaleFactor', 1.4, 'NLevels'
 
 featExtractors{4} = PHOWDetector();
 
-detNames = {'SIFT','SURF', 'ORB', 'PHOW'};
+featExtractors{5} = PHOWDetector('Color','gray');
+
+detNames = {'SIFT','SURF', 'ORB', 'PHOW-RGB', 'PHOW-GRAY'};
 
 % Define the benchmark class. This implements simple retrieval system which
 % uses extracted features in a K-Nearest Neighbour search in order to
@@ -47,7 +49,7 @@ retBenchmark = RetrievalBenchmark('MaxNumImagesPerSearch',100);
 % from 5k images. In order to compute the results in a reasonable time, we
 % will select only subset of the images. Wrapper of this data/home/sulaiset uniformly
 % samples the subsetsxr
-name = 'test';
+name = 'oxbuild';
 respath = 'res';
 t = datetime('now');
 signature = [name,datestr(t,'mm.dd.yy.HH.MM.SS')];

@@ -1,18 +1,28 @@
 
+import localFeatures.*
+    featExtractors{1} = VlFeatSift();
 
+    featExtractors{2} = SURFDetector('HessianThreshold', 100, 'NOctaves', 8, ...
+        'NOctaveLayers', 4);
 
-det1 = localFeatures.ORBDetector('NFeatures', 3000);
-[f1,d1] = det1.extractFeatures('test.jpg');
+    featExtractors{3} = ORBDetector('NFeatures', 3500, 'ScaleFactor', 1.4, 'NLevels', 16);
 
-det2 = localFeatures.VlFeatSift();
-[f2,d2] = det2.extractFeatures('test.jpg');
+    featExtractors{4} = PHOWDetector();
 
-
-det3 = localFeatures.SURFDetector('HessianThreshold', 500);
-[f3,d3] = det3.extractFeatures('test.jpg');
-
-import cv.*
-
-[f4,d4] = vl_covdet(single(rgb2gray(imread('test.jpg'))));
-
-[f5,d5] = vl_phow(single(rgb2gray(imread('test.jpg'))), 'Sizes', 10, 'Step',16, 'Color', 'rgb');
+    featExtractors{5} = PHOWDetector('Color','gray');
+    
+    folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
+    
+    all = dir(fullfile(folder, 'jpg*'));
+    
+    names = cell(1,length(all)/2);
+    
+    for i=1:length(names)
+        names{i} = all(i*2-1).name;
+    end
+    
+    disp(names)
+    
+    for i=1:length(names)
+       retrievalBenchmark(names{i}, featExtractors, fullfile(folder,'res')); 
+    end
