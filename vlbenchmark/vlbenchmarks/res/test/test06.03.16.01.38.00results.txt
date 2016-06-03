@@ -1,0 +1,6 @@
+test :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;test;Inf;Inf;30;30;1;true
+	PHOW :	Sizes;Step;Color;4;8;gray
+		3.437152e-01 mAP. 
+		11684 Avg. #Descs. 
+		4912 Avg. #Query Descs
+

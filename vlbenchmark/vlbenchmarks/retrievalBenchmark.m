@@ -1,4 +1,4 @@
-function [ output_args ] = retrievalBenchmark( name, featExtractors, resultsPath )
+function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
     %function [mAP queriesAp] = retrievalDemo(resultsPath)
     % RETRIEVALDEMO Demonstrates how to run the retrieval benchmark
     %   RETRIEVALDEMO() Runs the repeatability demo.
