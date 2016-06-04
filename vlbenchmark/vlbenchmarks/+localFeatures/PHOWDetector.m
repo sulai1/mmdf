@@ -16,6 +16,7 @@ classdef PHOWDetector < localFeatures.CVDetector
         
         function obj = PHOWDetector(varargin)
             obj = obj@localFeatures.CVDetector('PHOW',varargin);
+            obj.Name = ['PHOW-',obj.Opts.Color];
         end
         % extract the descriptors and convert them
         function [frames descriptors] = extractDescriptors(obj, imagePath, f)

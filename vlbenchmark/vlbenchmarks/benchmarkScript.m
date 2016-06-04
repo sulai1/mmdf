@@ -13,7 +13,7 @@ import localFeatures.*
     
     folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
     
-    all = dir(fullfile(folder, 'oxbuild*'));
+    all = dir(fullfile(folder, 'jp2*'));
     
     names = cell(1,length(all)/2);
     

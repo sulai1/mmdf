@@ -9,6 +9,7 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
     % Authors: Karel Lenc and Andrea Vedaldi
 
     % AUTORIGHTS
+    t0 = cputime;
 
     if nargin < 1, resultsPath = ''; end;
 
@@ -49,23 +50,33 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
     signature = [name,datestr(t,'mm.dd.yy.HH.MM.SS')];
     mkdir(fullfile(respath, name));
     dataset = VggRetrievalDataset('Category',name,...
+                                  'GoodImagesNum',inf,...
                                   'OkImagesNum',inf,...
-                                  'JunkImagesNum',30,...
+                                  'JunkImagesNum',inf,...
                                   'BadImagesNum',30);
+                              
     % Run the test for all defined feature extractors
     % Run the test for all defined feature extractors
     for d=1:numel(featExtractors)
+        t1 = cputime;
       [mAP(d) info(d)] =...
         retBenchmark.testFeatureExtractor(featExtractors{d}, dataset);
+        e = cputime - t1;
+        fprintf('retrieval benchmark : %s \nfeature extractor : %s\n finished after %d sec.\n',name,featExtractors{d}.Name,e);
     end
+    
+    %% PART 2: Average precisions
 
-    % --------------------------------------------------------------------
-    % PART 2: Average precisions
-    % --------------------------------------------------------------------
-
-
+    figure(1); clf;
+    bar(mAP);
+    set(gca,'XTickLabels',detNames); 
+    xlabel('FeatureDetector'); ylabel('mAP');
+    
+    
     % For all the tested feature extractors we get single value which asses
     % detector performance on the dataset.
+
+    %%
 
     % Calc average number of descriptors per dataset image
     numDescriptors = cat(1,info(:).numDescriptors);
@@ -103,7 +114,7 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
     savefig(fullfile(respath, name, [signature,'querries.fig']))
 
     % --------------------------------------------------------------------
-    % PART 3: Precision recall curves
+    %% PART 3: Precision recall curves
     % --------------------------------------------------------------------
 
     % More detailed results can be seen from the precision/recall curves which
@@ -117,7 +128,7 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
       [ap recall(:,d) precision(:,d)] = ...
         retBenchmark.rankedListAp(query, rankedList);
     end
-    figure(7); clf;
+    figure(3); clf;
     plot(recall, precision,'LineWidth',2); 
     xlabel('recall'); ylabel('Precision');
     grid on; legend(detNames,'Location','SW');
@@ -125,7 +136,7 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
     savefig(fullfile(respath,name, [signature,'prc.fig']))
 
     % --------------------------------------------------------------------
-    % PART 4: Plot a query results
+    %% PART 4: Plot a query results
     % --------------------------------------------------------------------
 
     function printScores(detectorNames, scores, names)
@@ -149,7 +160,9 @@ function mAP = retrievalBenchmark( name, featExtractors, resultsPath )
         fprintf('\n');
       end
     end
-
+    e = cputime - t0;
+    fprintf('retrieval benchmark : %s \n finished after %d sec.\n',name,e);
+   
 end
 
 

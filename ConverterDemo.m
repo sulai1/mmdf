@@ -12,7 +12,7 @@ for n=1:length(formats)
     for i=1:steps
         name = sprintf('%s_%d',formats{n}, ratios(i));
         dstDir= fullfile(dataDir,name);
-        avgSize = Converter.convertDB(fullfile(dataDir,'oxbuild'),dstDir, 'jpg', formats{n}, ratios(i));
+        avgSize = Converter.convertDB(fullfile(dataDir,'t10'),dstDir, 'jpg', formats{n}, ratios(i));
 
         fid = fopen('sizes.txt', 'at');
         fprintf(fid, '%s %f\n', name, avgSize);
