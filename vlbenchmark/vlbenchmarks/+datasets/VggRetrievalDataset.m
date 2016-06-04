@@ -134,10 +134,10 @@ classdef VggRetrievalDataset < datasets.GenericDataset & helpers.Logger ...
       if obj.Opts.cacheDatabase
         dataKey = [obj.DatasetName ';' struct2str(obj.Opts)];
         data = DataCache.getData(dataKey);
-        if ~isempty(data)
-          obj.debug('Database loaded from cache.');
-          [obj.Images obj.Queries] = data{:};
-        else
+         if ~isempty(data)
+           obj.debug('Database loaded from cache.');
+           [obj.Images obj.Queries] = data{:};
+         else
           [obj.Images obj.Queries] = obj.buildImageDatabase();
           DataCache.storeData({obj.Images obj.Queries},dataKey);
         end

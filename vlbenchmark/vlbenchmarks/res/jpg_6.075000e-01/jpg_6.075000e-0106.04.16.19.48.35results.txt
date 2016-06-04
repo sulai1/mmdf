@@ -1,0 +1,22 @@
+jpg_6.075000e-01 :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;jpg_6.075000e-01;10;10;10;10;1;true
+	VLFeat SIFT :
+		7.992041e-01 mAP. 
+		2.711787e+03 Avg. #Descs. 
+		1.059200e+03 Avg. #Query Descs
+	SURF :	HessianThreshold;NOctaves;NOctaveLayers;100;8;4
+		7.375922e-01 mAP. 
+		6.983809e+03 Avg. #Descs. 
+		3.133700e+03 Avg. #Query Descs
+	ORB :	NFeatures;ScaleFactor;NLevels;EdgeThreshold;WTA_K;PatchSize;8000;1.1;16;31;2;31
+		6.419475e-01 mAP. 
+		7.329043e+03 Avg. #Descs. 
+		3.765200e+03 Avg. #Query Descs
+	PHOW-rgb :	Sizes;Step;Color;16;16;rgb
+		7.802063e-01 mAP. 
+		2.709957e+03 Avg. #Descs. 
+		1.048100e+03 Avg. #Query Descs
+	PHOW-gray :	Sizes;Step;Color;16;16;gray
+		7.852191e-01 mAP. 
+		2.709957e+03 Avg. #Descs. 
+		1.048100e+03 Avg. #Query Descs
+

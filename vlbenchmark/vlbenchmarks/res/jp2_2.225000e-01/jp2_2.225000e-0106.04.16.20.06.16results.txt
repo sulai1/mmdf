@@ -1,0 +1,22 @@
+jp2_2.225000e-01 :	category;goodImagesNum;okImagesNum;junkImagesNum;badImagesNum;samplingSeed;cacheDatabase;jp2_2.225000e-01;10;10;10;10;1;true
+	VLFeat SIFT :
+		7.781370e-01 mAP. 
+		3.161234e+03 Avg. #Descs. 
+		1.218700e+03 Avg. #Query Descs
+	SURF :	HessianThreshold;NOctaves;NOctaveLayers;100;8;4
+		7.634189e-01 mAP. 
+		6.752298e+03 Avg. #Descs. 
+		2994 Avg. #Query Descs
+	ORB :	NFeatures;ScaleFactor;NLevels;EdgeThreshold;WTA_K;PatchSize;8000;1.1;16;31;2;31
+		6.413657e-01 mAP. 
+		7.332553e+03 Avg. #Descs. 
+		3.788800e+03 Avg. #Query Descs
+	PHOW-rgb :	Sizes;Step;Color;16;16;rgb
+		7.753511e-01 mAP. 
+		2.709957e+03 Avg. #Descs. 
+		1.048100e+03 Avg. #Query Descs
+	PHOW-gray :	Sizes;Step;Color;16;16;gray
+		7.842845e-01 mAP. 
+		2.709957e+03 Avg. #Descs. 
+		1.048100e+03 Avg. #Query Descs
+

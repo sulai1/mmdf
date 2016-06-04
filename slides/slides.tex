@@ -1,0 +1,143 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Sascha Wernegger}
+\title{Multimedia Data Formats}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Compression}
+	\begin{itemize}
+		\item ImageMagick
+		\item JXRLIB
+	\end{itemize}
+	
+\end{frame}
+
+\section{Benchmark}
+\begin{frame}{Benchmark}
+	\begin{itemize}
+		\item VLBENCHMARK
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Dataset}
+	\begin{itemize}
+		\item Oxbuild
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Queries}
+	the query consists of a reference image and 4 query sets:
+	\begin{itemize}
+		\item [good] A nice, clear picture of the object
+		\item [ok] More than 25\% of the object is clearly visible.
+		\item [junk] Junk Less than 25\% of the object is visible, or there are very high levels of occlusion or distortion.
+		\item [bad]  Object not present
+	\end{itemize}
+	\begin{tabular}{ll}
+		\includegraphics[width=0.7\textwidth]{img/query.jpg}
+	\end{tabular}
+	now similarity between these image is measured
+\end{frame}
+
+\begin{frame} {Generic Local Feature Extractor}
+	\begin{block}{Local Feature Frames}
+		\begin{itemize}
+			\item search image for interest points
+			\item define a frame for that point(points,circles,elipses)
+		\end{itemize}
+	\end{block}	 
+	\begin{block}{Descriptor}
+		\begin{itemize}
+			\item compute descriptor using the frame
+		\end{itemize}
+	\end{block}
+	So we got n frames and n descriptors
+\end{frame}
+
+\begin{frame} {Retrieval System}
+	\begin{block}{Ranking}
+		\begin{itemize}
+			\item calculate KNN for the every reference descriptor
+			\item vote with descriptor distance for the image
+			\item normalize
+			\item sort images after voting
+		\end{itemize}
+	\end{block}
+		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
+\end{frame}
+
+\section{Performance Evaluation}
+
+\begin{frame}{Recall Precision}
+	\begin{tabular}{ll}
+
+		\includegraphics[width=0.5\textwidth]{img/RecallPrecision.jpg}
+		\includegraphics[width=0.5\textwidth]{img/precision_recall.png}
+
+	\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Mean Average Precision}
+
+\includegraphics[width=0.9\textwidth]{img/map.png}
+
+\end{frame}
+
+\begin{frame}{Mean Average Precision add}
+	\begin{block}{How use the four query classes}
+		\begin{itemize}
+			\item good and ok images are relevant
+			\item junk will be ignored
+			\item bad will count as wrong
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
+\begin{frame}{FeatureDetectors}
+	\begin{itemize}
+		\item vlfeat
+		\begin{itemize}
+			\item SIFT
+			\item PHOW(DSIFT)
+		\end{itemize}
+		\item opencv
+		\begin{itemize}
+			\item SURF
+			\item ORB
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{itemize}
+		\item plot of mAP over image file size
+		\item plot query precision
+		\item plot prc
+	\end{itemize}
+\end{frame}
+
+\end{document}

@@ -39,10 +39,10 @@ classdef DataCache
 
 % AUTORIGHTS
   properties (Constant)
-    maxDataSize = 2000*1024^2; % Max. size of data in cache in Bytes
+    maxDataSize = 8000*1024^2; % Max. size of data in cache in Bytes
     dataPath = fullfile(pwd,'data','cache',''); % Cached data storage
     dataFileVersion = '-V7.3'; % Version of the .mat files stored
-    autoClear = false; % Clear data cache automatically
+    autoClear = true; % Clear data cache automatically
     disabled = false; % Disable caching
   end
 
