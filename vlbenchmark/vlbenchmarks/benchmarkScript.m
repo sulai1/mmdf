@@ -11,7 +11,7 @@ import localFeatures.*
     
     folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
     
-    all = dir(fullfile(folder, 'jxr*'));
+    all = dir(fullfile(folder, 'oxbuild*'));
     
     numDet = numel(featExtractors); 
     names = cell(1,length(all)/2);
