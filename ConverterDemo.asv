@@ -4,7 +4,7 @@ srcname = 't20';
 
 ratio = 0.5;
 
-formats = {'jp2'};
+formats = {'jpg'};
 avgSize = 4e+05;
 size = inf;
 
@@ -12,7 +12,7 @@ fid = fopen(fullfile(resDir,'sizes.txt'), 'at');
 fprintf(fid, '\n//%s %s\n', srcname, datestr(datetime('now')));
 index = 1;
 for n=1:length(formats)
-    while size>avgSize
+    while size-100>avgSize
         name = sprintf('%s_%f',formats{n}, ratio);
         dstDir= fullfile(dataDir,name);
         size = avgSize;

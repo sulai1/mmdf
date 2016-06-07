@@ -12,17 +12,16 @@
             lineindex = lineindex +1;
         end
     end
-    sizes = sizes(find(sizes))/389120;
+    sizes = 389120./sizes(find(sizes));
     %% print mAP
     figure(1);clf;
     for i=1:numDet
-        plot(sizes(mAP(:,i)));
+        semilogx(fliplr(sizes1:mAP()),fliplr(mAP(1:end,i)));
         hold on
     end
     title('Detector MAP over Ratio: %s');
     ax = gca;
     ax.YLim = [0.7,0.95];
-    legend(detNames,'Location','northwest');
     disp('mAP');
     disp(mAP);
     

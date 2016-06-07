@@ -29,14 +29,7 @@ hold on
 bar(2,log2(raw/jxr),'g');
 hold on
 bar(3,log2(raw/jp2),'b');
-ax = gca;
-ax.XTick = 1:3;
-ax.XTickLabel = {'JPG','JXR','J2P'};
-
-t =log2(1:6);
-ax.YTick = t;
-ax.FontSize = 16;
-ylabel('ratio');
+ax.XTickLabel = {'RAW','JPG','JXR','J2P'};
 
 % ax2= axes('Position',ax.Position,'YAxisLocation','right',...
 %     'color','none');

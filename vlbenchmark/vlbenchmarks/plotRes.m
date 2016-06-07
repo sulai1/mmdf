@@ -16,14 +16,12 @@
     %% print mAP
     figure(1);clf;
     for i=1:numDet
-        semilogx(fliplr(sizes),fliplr(mAP(2:end,i)));
+        semilogx(fliplr(sizes),fliplr(mAP(1:end,i)));
         hold on
     end
     title('Detector MAP over Ratio: %s');
     ax = gca;
     ax.YLim = [0.7,0.95];
-    ax.XLim = [sizes(1) sizes(end)];
-    legend(detNames,'Location','northwest');
     disp('mAP');
     disp(mAP);
     

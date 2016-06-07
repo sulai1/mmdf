@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.6.5)  7 JUN 2016 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.6.5)  7 JUN 2016 19:32
 entering extended mode
 **./slides.tex
 (slides.tex
@@ -1295,93 +1295,129 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 ] [2
 
 ]
+<img/jpg_100.jpg, id=108, 770.88pt x 1027.84pt>
+File: img/jpg_100.jpg Graphic file (type jpg)
+ <use img/jpg_100.jpg>
+Package pdftex.def Info: img/jpg_100.jpg used on input line 49.
+(pdftex.def)             Requested size: 153.64493pt x 204.8586pt.
+
+Overfull \vbox (7.68274pt too high) detected at line 49
+ []
+
 [3
 
-] [4
+ <./img/jpg_100.jpg>] <img/jpg.jpg, id=137, 578.16pt x 770.88pt>
+File: img/jpg.jpg Graphic file (type jpg)
 
-] [5
+<use img/jpg.jpg>
+Package pdftex.def Info: img/jpg.jpg used on input line 57.
+(pdftex.def)             Requested size: 107.55333pt x 143.39867pt.
+ <img/jp2.jpg, id=138, 578.16pt x 770.88pt>
+File: img/jp2.jpg Graphic file (type jpg)
+ <use img/jp2.jpg>
+Package pdftex.def Info: img/jp2.jpg used on input line 57.
+(pdftex.def)             Requested size: 107.55333pt x 143.39867pt.
 
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 94.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+<img/jxr.jpg, id=139, 578.16pt x 770.88pt>
+File: img/jxr.jpg Graphic file (type jpg)
+ <use img/jxr.jpg>
+Package pdftex.def Info: img/jxr.jpg used on input line 57.
+(pdftex.def)             Requested size: 107.55333pt x 143.39867pt.
+
+Overfull \hbox (15.37012pt too wide) in paragraph at lines 57--57
+ [][][] 
+ []
+
+[4
+
+ <./img/jpg.jpg> <./img/jp2.jpg> <./img/jxr.jpg>]
+LaTeX Font Info:    Try loading font information for U+msa on input line 70.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 94.
+LaTeX Font Info:    Try loading font information for U+msb on input line 70.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 94.
+line 70.
 
 (C:\Users\sascha\AppData\Roaming\MiKTeX\2.9\tex\latex\sansmathaccent\ot1mathker
 ncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [6
+) [5
 
-] <img/jpg-ratio.png, id=232, 422.32782pt x 316.18124pt>
+] <img/jpg-ratio.png, id=202, 422.32782pt x 316.18124pt>
 File: img/jpg-ratio.png Graphic file (type png)
 
 <use img/jpg-ratio.png>
-Package pdftex.def Info: img/jpg-ratio.png used on input line 97.
+Package pdftex.def Info: img/jpg-ratio.png used on input line 73.
 (pdftex.def)             Requested size: 245.83282pt x 184.05103pt.
- [7
+ [6
 
- <./img/jpg-ratio.png>]
-<img/query.jpg, id=264, 165.4983pt x 59.9841pt>
+ <./img/jpg-ratio.png>] [7
+
+] [8
+
+] [9
+
+]
+<img/query.jpg, id=326, 165.4983pt x 59.9841pt>
 File: img/query.jpg Graphic file (type jpg)
  <use img/query.jpg>
-Package pdftex.def Info: img/query.jpg used on input line 111.
+Package pdftex.def Info: img/query.jpg used on input line 126.
 (pdftex.def)             Requested size: 215.10196pt x 77.9683pt.
- [8
+ [10
 
- <./img/query.jpg>] [9
+ <./img/query.jpg>] [11
 
-] <img/retrieved.jpg, id=322, 87.62738pt x 74.07675pt>
+] <img/retrieved.jpg, id=384, 87.62738pt x 74.07675pt>
 File: img/retrieved.jpg Graphic file (type jpg)
 
 <use img/retrieved.jpg>
-Package pdftex.def Info: img/retrieved.jpg used on input line 138.
+Package pdftex.def Info: img/retrieved.jpg used on input line 153.
 (pdftex.def)             Requested size: 153.64493pt x 129.8883pt.
 
-Overfull \vbox (12.00911pt too high) detected at line 138
+Overfull \vbox (12.00911pt too high) detected at line 153
  []
 
-[10
+[12
 
  <./img/retrieved.jpg>]
-<img/RecallPrecision.jpg, id=351, 410.2828pt x 378.66469pt>
+<img/RecallPrecision.jpg, id=413, 410.2828pt x 378.66469pt>
 File: img/RecallPrecision.jpg Graphic file (type jpg)
 
 <use img/RecallPrecision.jpg>
-Package pdftex.def Info: img/RecallPrecision.jpg used on input line 150.
+Package pdftex.def Info: img/RecallPrecision.jpg used on input line 165.
 (pdftex.def)             Requested size: 153.64493pt x 141.80244pt.
 
-<img/precision_recall.png, id=352, 773.13844pt x 469.755pt>
+<img/precision_recall.png, id=414, 773.13844pt x 469.755pt>
 File: img/precision_recall.png Graphic file (type png)
 
 <use img/precision_recall.png>
-Package pdftex.def Info: img/precision_recall.png used on input line 150.
+Package pdftex.def Info: img/precision_recall.png used on input line 165.
 (pdftex.def)             Requested size: 153.64493pt x 93.3544pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 150--150
+Overfull \hbox (12.0pt too wide) in paragraph at lines 165--165
 [][]  
  []
 
-[11
+[13
 
  <./img/RecallPrecision.jpg> <./img/precision_recall.png>]
-<img/map.png, id=382, 864.98157pt x 565.36218pt>
+<img/map.png, id=445, 864.98157pt x 565.36218pt>
 File: img/map.png Graphic file (type png)
  <use img/map.png>
-Package pdftex.def Info: img/map.png used on input line 156.
+Package pdftex.def Info: img/map.png used on input line 171.
 (pdftex.def)             Requested size: 276.559pt x 180.76431pt.
- [12
+ [14
 
- <./img/map.png>] [13
+ <./img/map.png>] [15
 
-] [14
+] [16
 
 ]
 \tf@nav=\write6
@@ -1393,11 +1429,11 @@ Package pdftex.def Info: img/map.png used on input line 156.
 \tf@snm=\write8
 \openout8 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
  (slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: 1CABE91A5E924561CF7C5938BB53E6D1;156.
 
@@ -1405,13 +1441,13 @@ Package rerunfilecheck Info: File `slides.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 191.
  ) 
 Here is how much of TeX's memory you used:
- 17587 strings out of 493335
- 338138 string characters out of 3136678
+ 17615 strings out of 493335
+ 338508 string characters out of 3136678
  416264 words of memory out of 3000000
- 20646 multiletter control sequences out of 15000+200000
+ 20666 multiletter control sequences out of 15000+200000
  11577 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,65p,406b,663s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1422,9 +1458,9 @@ Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on slides.pdf (14 pages, 656333 bytes).
+Output written on slides.pdf (16 pages, 1809082 bytes).
 PDF statistics:
- 503 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

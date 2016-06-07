@@ -1,1 +1,0 @@
-mex opencv.cpp -IC:\Users\sascha\Documents\c++\opencv\build\include  -lopencv_world310.lib
