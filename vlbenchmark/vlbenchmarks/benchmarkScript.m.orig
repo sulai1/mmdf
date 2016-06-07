@@ -1,4 +1,3 @@
-clc;
 
 import localFeatures.*
     featExtractors{1} = SURFDetector('HessianThreshold', 100, 'NOctaves', 8, ...
@@ -12,9 +11,8 @@ import localFeatures.*
     
     folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
     
-    Format = 'jxr'; % format or name of the set(s)
-    
-    all = dir(fullfile(folder, [Format,'*']));
+    all = dir(fullfile(folder, 'jxr*'));
+    all = dir(fullfile(folder, 'jp2*'));
     
     numDet = numel(featExtractors); 
     names = cell(1,length(all)/2);
@@ -37,16 +35,22 @@ import localFeatures.*
     
     mAP = zeros(numSets, numDet);
     labels = zeros(1,numSets);
-    detNames = cell(1,numDet);
-    prcs = cell(numDet,numSets);
-    steps = 20;
     for i=1:numSets
        labels(i) = round(str2double(sorted{i}(5:end)),2);
-       [map, avgDesc, queriesAp, prc]= retrievalBenchmark(sorted{i}, featExtractors, steps); 
+       [map, avgDesc, queriesAp]= retrievalBenchmark(sorted{i}, featExtractors, fullfile(folder,'res')); 
        mAP(i,:) = map;
-       for d=1:numDet
-            prcs{d,i} = prc{d};
-            detNames{d} = featExtractors{d}.Name;
-       end
     end
-    plotRes;
+    
+    %%print mAP
+    figure(1); clf;
+    for i=1:numDet-1
+        plot(mAP(:,i));
+        hold on
+    end
+    
+    disp('mAP');
+    disp(mAP);
+    disp('avgDesc');
+    disp(avgDesc);
+    disp('queriesAp');
+    disp(queriesAp)

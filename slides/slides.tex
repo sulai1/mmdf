@@ -14,6 +14,16 @@
 %\institute{} 
 %\date{} 
 %\subject{} 
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
 \begin{document}
 
 \begin{frame}
@@ -32,6 +42,22 @@
 	
 \end{frame}
 
+\section{Feature Detectors}
+\begin{frame}{FeatureDetectors}
+	\begin{itemize}
+		\item vlfeat
+		\begin{itemize}
+			\item SIFT
+			\item PHOW(DSIFT)
+		\end{itemize}
+		\item opencv
+		\begin{itemize}
+			\item SURF
+			\item ORB
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
 \section{Benchmark}
 \begin{frame}{Benchmark}
 	\begin{itemize}
@@ -41,13 +67,37 @@
 \end{frame}
 
 \begin{frame}{Dataset}
+\begin{block} {Oxford Buildings Dataset}
 	\begin{itemize}
-		\item Oxbuild
+		\item 5062 images
+		\item compressed loss-less or with minimal loss in JPEG
+		\item collected from Flickr by searching for particular Oxford landmarks
+		\item manually annotated to generate ground truth for 11 different landmarks
+		\item 5 queries per landmark
+		\item total of 55 queries
 	\end{itemize}
+\end{block}
+	Random sampled subsets to limit compression and benchmark speed!
+\end{frame}
+
+\begin{frame} {Estimate Compression Ratio}
+			\begin{block}{t}	
+				$s$ : avg size = 391.659 bytes.\\
+				$p$ :  avg pixels = 765.969 pixel.\\
+				$bpp$ : byte per pixel = 3.\\
+				$r$ : avg raw size = $p*bpp$ = 2297908.\\
+				$e$ : estimated ratio = $r/s = 5.867$.
+			\end{block}	
+			\begin{equation}
+				\textbf{Estimated Compressionratio = }
+			\end{equation}
+\end{frame}
+\begin{frame}
+	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
 \end{frame}
 
 \begin{frame}{Queries}
-	the query consists of a reference image and 4 query sets:
+	The query consists of a reference image and 4 query sets:
 	\begin{itemize}
 		\item [good] A nice, clear picture of the object
 		\item [ok] More than 25\% of the object is clearly visible.
@@ -113,23 +163,6 @@
 			\item bad will count as wrong
 		\end{itemize}
 	\end{block}
-\end{frame}
-
-
-
-\begin{frame}{FeatureDetectors}
-	\begin{itemize}
-		\item vlfeat
-		\begin{itemize}
-			\item SIFT
-			\item PHOW(DSIFT)
-		\end{itemize}
-		\item opencv
-		\begin{itemize}
-			\item SURF
-			\item ORB
-		\end{itemize}
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{Results}
