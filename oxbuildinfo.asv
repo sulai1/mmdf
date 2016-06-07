@@ -1,4 +1,0 @@
-dataDir = fullfile('vlbenchmark','vlbenchmarks', 'data','datasets','vggRetrievalDataset','oxbuild');
-listing = dir(,'*.jpg'));
-sum([listing.bytes])
-info = imageinfo(listing);

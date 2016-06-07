@@ -50,17 +50,13 @@ classdef Converter
         
         %%conversion using ImageMagick
         function convertMagick(in,out,quality)
-            if strcmp(out(end-3:end), Converter.JPG);
-                system(sprintf('convert %s -quality %u,%u  -define jpeg:dct-method=float -define jpeg:optimize-coding=off %s',in, round(quality*100), round(quality*100), out));
-            else
-                 system(sprintf('convert %s -quality %u %s',in, round(quality*100), out));
-            end
+            system(sprintf('convert %s -quality %u,%u  -define jpeg:dct-method=float -define jpeg:optimize-coding=off %s',in, round(quality*100), round(quality*100), out));
         end
         
         %%conversion using jxrlib's JXREncApp and JXRDecApp
         function convertJXR(in,out,quality)
             if(out(end-3:end)==Converter.JXR)  %handle gray
-                system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*100)+1, out));
+                system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*254)+1, out));
              else
                   system(sprintf('JxrDecApp -i %s -o %s',in, out));
             end
@@ -101,11 +97,8 @@ classdef Converter
         %not jpg the file is compressed back to lossless jpg so the
         %retrieval demo can handle it.
         function avgSize = convertDB(srcDir,dstDir,srcFormat,dstFormat,sratio)
-            if exist(dstDir,'dir')
-               rmdir(dstDir,'s'); 
-            end
+            if exist
             mkdir(dstDir);
-            
             names = dir(fullfile(srcDir, ['*.',srcFormat])) ;
             imagenames = {names.name};
             nrimg = numel(names);

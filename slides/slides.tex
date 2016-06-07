@@ -42,6 +42,36 @@
 	
 \end{frame}
 
+\begin{frame}{Sample}
+	\begin{figure}
+		\includegraphics[width=0.5\textwidth]{img/jpg_100.jpg}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Comparison}
+	\begin{figure}
+		\includegraphics[width=0.35\textwidth]{img/jpg.jpg}
+		\includegraphics[width=0.35\textwidth]{img/jp2.jpg}
+		\includegraphics[width=0.35\textwidth]{img/jxr.jpg}
+	\end{figure}
+\end{frame}
+
+\begin{frame} {Estimate Compression Ratio}
+			\begin{block}{t}	
+				$s$ : avg size = 391.659 bytes.\\
+				$p$ :  avg pixels = 765.969 pixel.\\
+				$bpp$ : byte per pixel = 3.\\
+				$r$ : avg raw size = $p*bpp$ = 2297908.\\
+				$e$ : estimated ratio = $r/s = 5.867$.
+			\end{block}	
+			\begin{equation}
+				\textbf{Estimated Compressionratio = }
+			\end{equation}
+\end{frame}
+\begin{frame}
+	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
+\end{frame}
+
 \section{Feature Detectors}
 \begin{frame}{FeatureDetectors}
 	\begin{itemize}
@@ -80,21 +110,6 @@
 	Random sampled subsets to limit compression and benchmark speed!
 \end{frame}
 
-\begin{frame} {Estimate Compression Ratio}
-			\begin{block}{t}	
-				$s$ : avg size = 391.659 bytes.\\
-				$p$ :  avg pixels = 765.969 pixel.\\
-				$bpp$ : byte per pixel = 3.\\
-				$r$ : avg raw size = $p*bpp$ = 2297908.\\
-				$e$ : estimated ratio = $r/s = 5.867$.
-			\end{block}	
-			\begin{equation}
-				\textbf{Estimated Compressionratio = }
-			\end{equation}
-\end{frame}
-\begin{frame}
-	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
-\end{frame}
 
 \begin{frame}{Queries}
 	The query consists of a reference image and 4 query sets:
