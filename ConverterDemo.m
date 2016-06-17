@@ -4,12 +4,10 @@ srcname = 't20';
 
 ratio = 0.5;
 
-formats = {'jp2'};
+formats = {'jxr'};
 avgSize = 4e+05;
 size = inf;
 
-fid = fopen(fullfile(resDir,'sizes.txt'), 'at');
-fprintf(fid, '\n//%s %s\n', srcname, datestr(datetime('now')));
 index = 1;
 for n=1:length(formats)
     while size>avgSize
@@ -33,4 +31,3 @@ t.Name = Name';
 t.Duration = Duration';
 t.AvgSize = AvgSize';
 writetable(t, fullfile(resDir,'convert.txt'));
-fclose(fid); 

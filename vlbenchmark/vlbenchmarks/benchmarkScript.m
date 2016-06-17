@@ -12,7 +12,7 @@ import localFeatures.*
     
     folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
     
-    Format = 'jxr'; % format or name of the set(s)
+    Format = 'oxbuild'; % format or name of the set(s)
     
     all = dir(fullfile(folder, [Format,'*']));
     
@@ -40,9 +40,10 @@ import localFeatures.*
     detNames = cell(1,numDet);
     prcs = cell(numDet,numSets);
     steps = 20;
+    queriesAp = cell(1,numSets);
     for i=1:numSets
        labels(i) = round(str2double(sorted{i}(5:end)),2);
-       [map, avgDesc, queriesAp, prc]= retrievalBenchmark(sorted{i}, featExtractors, steps); 
+       [map, avgDesc, queriesAp{i}, prc]= retrievalBenchmark(sorted{i}, featExtractors, steps); 
        mAP(i,:) = map;
        for d=1:numDet
             prcs{d,i} = prc{d};

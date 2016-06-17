@@ -60,7 +60,7 @@ classdef Converter
         %%conversion using jxrlib's JXREncApp and JXRDecApp
         function convertJXR(in,out,quality)
             if(out(end-3:end)==Converter.JXR)  %handle gray
-                system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*100)+1, out));
+                system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*100), out));
              else
                   system(sprintf('JxrDecApp -i %s -o %s',in, out));
             end
@@ -72,8 +72,11 @@ classdef Converter
         end
         
         function parConvert2size(in,out,id,extent)
-            max = 1;
+            max = 0.5;
             min = 0;
+            if extent < 500
+               extent = 500;
+            end
             while(abs(max-min)>0.01)%there are only 100 quality levels
                 if(max>1)
                     disp('err')
@@ -102,10 +105,10 @@ classdef Converter
         %retrieval demo can handle it.
         function avgSize = convertDB(srcDir,dstDir,srcFormat,dstFormat,sratio)
             if exist(dstDir,'dir')
-               rmdir(dstDir,'s'); 
+                avgSize = -1;
+              return;
             end
             mkdir(dstDir);
-            
             names = dir(fullfile(srcDir, ['*.',srcFormat])) ;
             imagenames = {names.name};
             nrimg = numel(names);
@@ -114,22 +117,24 @@ classdef Converter
                src = fullfile(srcDir,imagenames{i});
                dst = fullfile(dstDir,[imagenames{i}(1:end-3),dstFormat]);
                asjpg = [dst(1:end-3),'jpg'];
-               if (~exist(asjpg,'file')) %skip if allready in folder to resume in case of interrupt
-                   extent = names(i).bytes*sratio;
-                   Converter.parConvert2size(src,dst,i,extent);
-                   listing = dir(dst);
-                   fprintf('converting: %d/%d. %s -> %d bytes\n', ...
-                        i, nrimg, dst, listing(1).bytes);
-                   sizes(i)=listing(1).bytes;
-                   %if we are not compressing to jpg we have to compress it
-                   %back lossless for compatibility with the retrieval demo
-                   if ~strcmp(dstFormat,'jpg')
-                       Converter.parconvert(dst,asjpg,i,1.0);
-                       delete(dst);
-                   end
+               extent = names(i).bytes*sratio;
+               Converter.parConvert2size(src,dst,i,extent);
+               listing = dir(dst);
+               fprintf('converting: %d/%d. %s -> %d bytes\n', ...
+                    i, nrimg, dst, listing(1).bytes);
+               sizes(i)=listing(1).bytes;
+               %if we are not compressing to jpg we have to compress it
+               %back lossless for compatibility with the retrieval demo
+               if ~strcmp(dstFormat,'jpg')
+                   Converter.parconvert(dst,asjpg,i,1.0);
+                   delete(dst);
                end
             end
-            %%count non zeros and sum up
+            fid = fopen(fullfile(dstDir,'sizes.txt'),'w');
+            for i=1: nrimg
+                fprintf(fid,'%f\n',sizes(i));
+            end
+            fclose(fid); 
             sum = 0;
             count = 0;
             for i=1:nrimg

@@ -77,7 +77,7 @@ function [mAP, avgDescsNum, queriesAp,prc] = retrievalBenchmark( name, featExtra
 
     prec = cell(numel(featExtractors), dataset.NumQueries);
     rec = cell(numel(featExtractors), dataset.NumQueries);
-    steps = 1/nSteps:1/nSteps:1;
+    steps = 0:0.1:1;
     for i=1:dataset.NumQueries
         query = dataset.getQuery(i);
 
