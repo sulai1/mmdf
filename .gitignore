@@ -1,1 +1,5 @@
 /vlbenchmark/vlbenchmarks/data
+/slides/*.aux
+/slides/*.log
+/slides/*.nav
+/slides/slides.pdf

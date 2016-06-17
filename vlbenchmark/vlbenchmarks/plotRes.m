@@ -17,6 +17,7 @@
     fclose(fid);
     %% print mAP
     figure(1);clf;
+<<<<<<< HEAD
     if numSets == 1
         for i=1:numDet
             b = bar(i,mAP(i));
@@ -28,14 +29,23 @@
             plot(fliplr(sizes),fliplr(mAP(1:end,i)));
             hold on
         end
+=======
+    for i=1:numDet
+        semilogx(fliplr(sizes),fliplr(mAP(1:end,i)));
+        hold on
+>>>>>>> eda4c1669dd4247f3d4545871463de02e6b592fd
     end
     title('Detector MAP over Ratio');
     legend(detNames);
     ax = gca;
+<<<<<<< HEAD
     s = size(mAP);
     if s(1)~=1
         ax.YLim = [floor(min(mAP(1,:))*10)/10,ceil(max(mAP(length(mAP),:))*10)/10];
     end
+=======
+    ax.YLim = [0.7,0.95];
+>>>>>>> eda4c1669dd4247f3d4545871463de02e6b592fd
     disp('mAP');
     disp(mAP);
     

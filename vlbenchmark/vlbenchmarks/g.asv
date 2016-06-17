@@ -1,0 +1,8 @@
+bar(log([196808.261307, 211.708543, 1756.96147400000]))
+ax = gca;
+ax.XTick = 1:3;
+
+t = linspace(2, 6, 5);
+ax.YTick = t.*2;
+ax.YTickLabel = 10.^t;
+ax.XTickLabel = {'jpg','j2p','jxr'};
