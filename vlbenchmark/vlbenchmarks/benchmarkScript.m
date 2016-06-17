@@ -10,7 +10,7 @@ import localFeatures.*
     featExtractors{4} = PHOWDetector('Sizes',16,'Step',16);
     featExtractors{5} = PHOWDetector('Color','gray','Sizes',16,'Step',16);
     
-    folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
+    folder = 'data/datasets/vggRetrievalDataset';
     
     Format = 'oxbuild'; % format or name of the set(s)
     
