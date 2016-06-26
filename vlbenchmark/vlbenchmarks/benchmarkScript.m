@@ -12,7 +12,7 @@ import localFeatures.*
     
     folder = '/media/sf_Shared_Folder/vlbenchmark/vlbenchmarks/data/datasets/vggRetrievalDataset';
     
-    Format = 'oxbuild'; % format or name of the set(s)
+    Format = 'jpg'; % format or name of the set(s)
     
     all = dir(fullfile(folder, [Format,'*']));
     
