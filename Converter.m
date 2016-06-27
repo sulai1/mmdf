@@ -60,11 +60,7 @@ classdef Converter
         %%conversion using jxrlib's JXREncApp and JXRDecApp
         function convertJXR(in,out,quality)
             if(out(end-3:end)==Converter.JXR)  %handle gray
-<<<<<<< HEAD
                 system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*100), out));
-=======
-                system(sprintf('JxrEncApp -i %s -q %f1.2 -q %u -o %s',in, quality,round((1-quality)*100)+1, out));
->>>>>>> eda4c1669dd4247f3d4545871463de02e6b592fd
              else
                   system(sprintf('JxrDecApp -i %s -o %s',in, out));
             end
@@ -109,12 +105,8 @@ classdef Converter
         %retrieval demo can handle it.
         function avgSize = convertDB(srcDir,dstDir,srcFormat,dstFormat,sratio)
             if exist(dstDir,'dir')
-<<<<<<< HEAD
                 avgSize = -1;
-              return;
-=======
-               rmdir(dstDir,'s'); 
->>>>>>> eda4c1669dd4247f3d4545871463de02e6b592fd
+                return;
             end
             mkdir(dstDir);
             
