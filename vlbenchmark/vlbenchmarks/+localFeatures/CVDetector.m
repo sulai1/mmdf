@@ -4,8 +4,8 @@ classdef CVDetector < helpers.GenericInstaller ...
     % implement abstract methods and properties and the constructor to add
     % the functionality.
     
-    properties (Constant)
-        CVPATH = '/home/sulai/Desktop/mexopencv-2.4';
+    properties (Static)
+        CVPATH;
     end
     
     properties (Abstract)
@@ -27,7 +27,11 @@ classdef CVDetector < helpers.GenericInstaller ...
     
     methods
         function obj = CVDetector(name,varargin)
-            addpath(obj.CVPATH);
+            if ~exist(obj.CVPATH,'dir')
+                addpath(obj.CVPATH);
+            else
+                fprintf('Could not find the mexopencv path.\nplease use the static property of CVDetector called CVPATH to set the path!');
+            end
             % Implement a constructor to parse any option passed to the
             % feature extractor and store them in the obj.Opts structure.
             
