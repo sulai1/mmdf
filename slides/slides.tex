@@ -285,24 +285,50 @@ min avg size in bytes & 13229 & 1756 & 511 \\
         \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{FeatureDetectors}
-	\begin{itemize}
-		\item vlfeat
-		\begin{itemize}
-			\item SIFT
-			\item PHOW(DSIFT)
-		\end{itemize}
-		\item opencv
-		\begin{itemize}
-			\item SURF
-			\item ORB
-		\end{itemize}
-	\end{itemize}
+\begin{frame}{SIFT (Scale-Invariant Feature Transform)}
+  \begin{itemize}
+  \item SIFT Algorithm is comprised by 3 steps:
+    \begin{enumerate}
+    \item Extracting key points (feature)
+    \item Feature descriptor (based on Gradient Histogram)
+    \item Feature matching
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame} {Extracting key points (feature) / Detection of scale-space extrema}
+  \begin{enumerate}
+  \item Local extrema detection: \\
+    \small
+    The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian (DoG) function to identify potential interest points that are invariant to scale and orientation.
+    \normalsize
+  \item Accurate keypoint localization
+  \item Orientation assignment
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Scale-space extrema detection}
+  \begin{itemize}
+  \item Find the points, whose surrounding patches (with some scale) are distinctive
+  \item An approximation to the scale-normalized Laplacian of Gaussian \\
+    \( L(x,y,\sigma) = G(x,y,\sigma) * I(x,y) \) \\
+    \( G(x,y,\sigma) = \frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2} \) \\
+    \( D(x,y,\sigma) = (G(x,y,k\sigma) - G(x,y,\sigma) - G(x,y,\sigma)) * I(x,y) = L(x,y,k\sigma) - L(x,y,\sigma) \) \\
+    \vfill
+    \tiny{
+      L is blur Image \\
+      G is Gaussian Blur operator \\
+      I is an Image \\
+      x,y are the location coordination \\
+      \(\sigma \) is Scale parameter. The amount of blur (greater value, greater the blur) \\
+      The * is the convolution operation in x and y. It applies Gaussian blur G onto the image I
+    }
+  \end{itemize}
 \end{frame}
 
 \section{Results}
 \begin{frame}{Results}
-	\begin{itemize}
+  \begin{itemize}
 		\item plot of mAP over image file size
 		\item plot query precision
 		\item plot prc
