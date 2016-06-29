@@ -27,7 +27,7 @@ classdef VlFeatMser < localFeatures.GenericLocalFeatureExtractor & ...
       obj.vlMserArguments = obj.configureLogger(obj.Name,varargin);
     end
 
-    function [frames] = extractFeatures(obj, imagePath)
+    function [frames, descriptors] = extractFeatures(obj, imagePath)
       import helpers.*;
       import localFeatures.*;
       frames = obj.loadFeatures(imagePath,false);
@@ -45,6 +45,21 @@ classdef VlFeatMser < localFeatures.GenericLocalFeatureExtractor & ...
       frames = vl_ertr([brightOnDarkFrames darkOnBrightFrames]);
       sel = frames(3,:).*frames(5,:) - frames(4,:).^2 >= 1 ;
       frames = frames(:, sel) ;
+       dims = size(frames);
+        fn = zeros(4,dims(2));
+        for i=1:dims(2)
+            fn(1,i) = frames(1,i);
+            fn(2,i) = frames(2,i);
+
+            A = [frames(3,i),frames(4,i);frames(4,i),frames(5,i)];
+            [~ , D] = eig(A);
+            fn(3,i) = sqrt(mean([norm(D(:,1)),norm(D(:,2))]));
+            [~,index] = max([norm(D(:,1)),norm(D(:,2))]);
+            fn(4,i) = dot([1,0],D(:,index));
+        end
+      
+      [frames, descriptors] = vl_sift(single(img), 'frames', fn) ;
+      
       timeElapsed = toc(startTime);
       obj.debug('%d Frames from image %s computed in %gs',...
         size(frames,2),getFileName(imagePath),timeElapsed);
