@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
+\beamer@endinputifotherversion {3.33pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Performance Evaluation}{5}{0}{2}
@@ -8,7 +8,7 @@
 \beamer@subsectionintoc {3}{1}{Dataset}{13}{0}{3}
 \beamer@subsectionintoc {3}{2}{Compression}{19}{0}{3}
 \beamer@sectionintoc {4}{Feature Detectors}{23}{0}{4}
-\beamer@sectionintoc {5}{Results}{25}{0}{5}
-\beamer@subsectionintoc {5}{1}{JPEG-2000}{26}{0}{5}
-\beamer@subsectionintoc {5}{2}{JPEG-XR}{29}{0}{5}
-\beamer@subsectionintoc {5}{3}{JPEG}{32}{0}{5}
+\beamer@sectionintoc {5}{Results}{27}{0}{5}
+\beamer@subsectionintoc {5}{1}{JPEG-2000}{28}{0}{5}
+\beamer@subsectionintoc {5}{2}{JPEG-XR}{31}{0}{5}
+\beamer@subsectionintoc {5}{3}{JPEG}{34}{0}{5}
