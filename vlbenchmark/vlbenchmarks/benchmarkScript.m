@@ -12,7 +12,7 @@ import localFeatures.*
     
     folder = 'data/datasets/vggRetrievalDataset';
     
-    Format = 't20'; % format or name of the set(s)
+    Format = 'jpg'; % format or name of the set(s)
     
     all = dir(fullfile(folder, [Format,'*']));
     
