@@ -184,7 +184,7 @@ at a higher recall level
 		\item total of 55 queries
 	\end{itemize}
 \end{block}
-	Random sampled subsets to limit compression and benchmark speed!
+	Random sampled subsets to improve compression and benchmark speed!
 \end{frame}
 
 
@@ -208,7 +208,7 @@ VlBenchmark uses a slightly different scheme, but the calculation stays the same
 		\begin{itemize}
 			\item good and ok images are relevant
 			\item junk will be ignored
-			\item bad will count as wrong
+			\item bad will count as irrelevant
 		\end{itemize}
 	\end{block}
 Junk images do not influence precision or recall!
@@ -275,7 +275,7 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 	\end{block}	 
 	\begin{block}{Descriptor}
 		\begin{itemize}
-			\item compute descriptor using the image data defined by the sframe
+			\item compute descriptor using the image data defined by the frame
 			\item every descriptor is a vector of same dimension
 		\end{itemize}
 	\end{block}
@@ -285,7 +285,7 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \begin{frame} {Retrieval System}
 	\begin{block}{Ranking}
 		\begin{itemize}
-			\item calculate reference descriptor
+			\item calculate reference descriptors
 			\item calculate KNN's of the query descriptors
 			\item for every Descriptor of the KNN's Vote for the corresponding image of the descriptor
 			\item repeat for all reference descriptors
@@ -360,7 +360,7 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \end{frame}
 
 \begin{frame}{Difference of Gaussian}
-  \includegraphics[width=0.8\textwidth]{img/sift-dog-idea.jpg}
+  \includegraphics[width=0.9\textwidth]{img/DoG.png}
 \end{frame}
 
 \begin{frame}{Accurate keypoint localization}
@@ -369,10 +369,11 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
       \begin{itemize}
       \item Compare a pixel (x) with 26 pixels in current and adjucent scales (Green Circles)
       \item Scale a pixel (X) if larger/smaller than all 26 pixels
+      \item Large number of extrema, computationally expensive
       \end{itemize}
     \end{column}
     \begin{column}{.5\textwidth}
-      \includegraphics[width=0.8\textwidth]{img/key_localization.jpg}
+      \includegraphics[width=0.8\textwidth]{img/key_localization.png}
     \end{column}
   \end{columns}
 \end{frame}
@@ -382,6 +383,10 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \item Eliminating the Edge Response
   \item Eliminating poor contrast points
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \center\Huge{\( feature_{i} = x_{i}, y_{i}, s_{i} \)}
 \end{frame}
 
 \begin{frame}{Orientation Assignment}
