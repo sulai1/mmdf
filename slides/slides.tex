@@ -289,41 +289,129 @@ min avg size in bytes & 13229 & 1756 & 511 \\
   \begin{itemize}
   \item SIFT Algorithm is comprised by 3 steps:
     \begin{enumerate}
-    \item Extracting key points (feature)
+    \item Extracting key points (features)
+      \begin{enumerate}
+      \item Local extrema detection
+      \item Accurate keypoint localization
+      \item Orientation assignment
+      \end{enumerate}
     \item Feature descriptor (based on Gradient Histogram)
     \item Feature matching
     \end{enumerate}
   \end{itemize}
 \end{frame}
 
-\begin{frame} {Extracting key points (feature) / Detection of scale-space extrema}
+%% \begin{frame} {Extracting key points (feature) / Detection of scale-space extrema}
+%%   \begin{enumerate}
+%%   \item Local extrema detection: \\
+%%     \small
+%%     The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian (DoG) function to identify potential interest points that are invariant to scale and orientation.
+%%     \normalsize
+%%   \item Accurate keypoint localization
+%%   \item Orientation assignment
+%%   \end{enumerate}
+%% \end{frame}
+
+\begin{frame}{Local extrema detection}
+  \begin{itemize}
+  \item Find the points, whose surrounding patches (with some scale) are distinctive
+  \item An approximation to the scale-normalized Laplacian of Gaussian 
+    %% \( L(x,y,\sigma) = G(x,y,\sigma) * I(x,y) \) \\
+    %% \( G(x,y,\sigma) = \frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2} \) \\
+    %% \( D(x,y,\sigma) = (G(x,y,k\sigma) - G(x,y,\sigma) - G(x,y,\sigma)) * I(x,y) = L(x,y,k\sigma) - L(x,y,\sigma) \) \\
+    %% \vfill
+    %% \tiny{
+    %%   L is blur Image \\
+    %%   G is Gaussian Blur operator \\
+    %%   I is an Image \\
+    %%   x,y are the location coordination \\
+    %%   \(\sigma \) is Scale parameter. The amount of blur (greater value, greater the blur) \\
+    %%   The * is the convolution operation in x and y. It applies Gaussian blur G onto the image I
+    %% }
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Difference of Gaussian}
   \begin{enumerate}
-  \item Local extrema detection: \\
-    \small
-    The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian (DoG) function to identify potential interest points that are invariant to scale and orientation.
-    \normalsize
-  \item Accurate keypoint localization
-  \item Orientation assignment
+  \item A = Convolve image with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
+  \item B = Convolve A with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
+  \item DoG (Difference of Gaussian) = A – B
+  \item Downsample B
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Scale-space extrema detection}
+\begin{frame}{Difference of Gaussian}
+  \includegraphics[width=0.8\textwidth]{img/sift-dog-idea.jpg}
+\end{frame}
+
+\begin{frame}{Accurate keypoint localization}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+      \item Compare a pixel (x) with 26 pixels in current and adjucent scales (Green Circles)
+      \item Scale a pixel (X) if larger/smaller than all 26 pixels
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \includegraphics[width=0.8\textwidth]{img/key_localization.jpg}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Accurate keypoint localization}
   \begin{itemize}
-  \item Find the points, whose surrounding patches (with some scale) are distinctive
-  \item An approximation to the scale-normalized Laplacian of Gaussian \\
-    \( L(x,y,\sigma) = G(x,y,\sigma) * I(x,y) \) \\
-    \( G(x,y,\sigma) = \frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2} \) \\
-    \( D(x,y,\sigma) = (G(x,y,k\sigma) - G(x,y,\sigma) - G(x,y,\sigma)) * I(x,y) = L(x,y,k\sigma) - L(x,y,\sigma) \) \\
-    \vfill
-    \tiny{
-      L is blur Image \\
-      G is Gaussian Blur operator \\
-      I is an Image \\
-      x,y are the location coordination \\
-      \(\sigma \) is Scale parameter. The amount of blur (greater value, greater the blur) \\
-      The * is the convolution operation in x and y. It applies Gaussian blur G onto the image I
-    }
+  \item Eliminating the Edge Response
+  \item Eliminating poor contrast points
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Orientation Assignment}
+  For each remaining key point: \\
+  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size, or the ``orientation collection region'', is equal to the size of the kernel for Gaussian Blur of amount 1.5*sigma).
+\end{frame}
+
+\begin{frame}{Orientation Assignment}
+  \begin{itemize}
+  \item A histogram is created for mentioned images (Gradient Orientation and Weighted Magnitude)
+  \item In this histogram, the 360 degrees of orientation are broken into 36 bins (each 10 degrees). Once you've done this for all pixels around the keypoint, the histogram will have a peak at some point
+  \item Also, any peaks above 80\% of the highest peak are converted into a new keypoint. This new keypoint has the same location and scale as the original. But it's orientation is equal to the other peak
+  \item So, orientation can split up one keypoint into multiple keypoints
+  \end{itemize}
+\end{frame}
+
+\begin{frame} {Orientation Assignment}
+  \includegraphics[width=.8\textwidth]{img/histogramOrientation.png}
+\end{frame}
+
+\begin{frame}{2.Feature Descriptor}
+  \begin{itemize}
+  \item At this point each keypoint has location, scale and orientation
+  \item This means the Keypoints are invariant to viewpoint and illumination changes
+  \end{itemize}
+\end{frame}
+
+\begin{frame} {Feature Descriptor}
+  \includegraphics[width=.8\textwidth]{img/rotationDescriptorfinal.png}
+\end{frame}
+
+\begin{frame} {Feature Descriptor}
+%  \begin{itemize}
+%  4\times4 arrays of 8 bin histogram is used, this is a 128 dimensional vector
+%  \item a total of 128 features for one keypoint
+%  \end{itemize}
+ % \begin{tabular}{cc}
+ %   \includegraphics[width=.2\textwidth]{img/KeypointDescriptor.png}
+ %   \includegraphics[width=.2\textwidth]{img/hist_rand.png}
+ % \end{tabular}
+  \begin{columns}
+    \begin{column}{.4\textwidth}
+      \includegraphics[width=.7\textwidth]{img/KeypointDescriptor.png}
+    \end{column}
+    \begin{column}{.6\textwidth}
+      \includegraphics[width=.7\textwidth]{img/hist_rand.png}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \section{Results}
@@ -337,7 +425,7 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 
 \subsection{JPEG-2000}
 \begin{frame} {MAP over Ratio}
-	\includegraphics[width=0.8\textwidth]{img/jp2_map.jpg}
+  \includegraphics[width=0.8\textwidth]{img/jp2_map.jpg}
 \end{frame}
 
 \begin{frame} {Query AP over Ratio}
