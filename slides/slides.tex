@@ -57,6 +57,7 @@
         \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
+\subsection{Content Based Image Retrieval}
 \begin{frame}{Content Based Image Retrieval}
 \begin{block} {CBIR}
 	\begin{itemize}
@@ -75,6 +76,7 @@
 
 \end{frame}
 
+\subsection{Software}
 \begin{frame}{Software}
 \begin{block}{VlBenchmark,VLFeat}
 	\begin{itemize}
@@ -106,12 +108,11 @@
 \begin{frame}{Recall Precision}
 
 \begin{itemize}
-	\item \textbf{Precision:} $ |{relevant documents}\cap{retrieved documents}| $
+	\item \textbf{Precision:} $ |\textbf{relevant documents}\cap\textbf{retrieved documents}| \over |\textbf{relevant documents}|$
+	\item \textbf{Recall:} $ |\textbf{relevant documents}\cap\textbf{retrieved documents}| \over |\textbf{retrieved documents}|$
 \end{itemize}
 
-\begin{wrapfigure}{t}{5.cm}
 		\includegraphics[width=0.5\textwidth]{img/RecallPrecision.jpg}
-\end{wrapfigure} 
 
 \end{frame}
 
@@ -240,7 +241,7 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 \hline
 \end{tabular}
 \begin{figure}
-\includegraphics[width=1\textwidth]{img/ratio.png}
+\includegraphics[width=0.7\textwidth]{img/compression.png}
 		\caption{light is ratio compared to jpg, dark compared to avg. raw size}
 \end{figure}
 \end{frame}
@@ -263,19 +264,6 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 
 \subsection{Retrieval System}
 
-\begin{frame} {Retrieval System}
-	\begin{block}{Ranking}
-		\begin{itemize}
-			\item calculate KNN for the every reference descriptor
-			\item vote with descriptor distance for the image
-			\item normalize
-			\item sort images after voting
-		\end{itemize}
-	\end{block}
-		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
-\end{frame}
-
-
 \begin{frame} {Generic Local Feature Extractor}
 The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose of the Feature Extractor is to calculate frames and corresponding descriptors from the image data.
 	\begin{block}{Local Feature Frames}
@@ -292,6 +280,20 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 	\end{block}
 	So we got n frames and n descriptors
 \end{frame}
+
+\begin{frame} {Retrieval System}
+	\begin{block}{Ranking}
+		\begin{itemize}
+			\item calculate reference descriptor
+			\item calculate KNN's of the query descriptors
+			\item for every Descriptor of the KNN's Vote for the corresponding image of the descriptor
+			\item repeat for all reference descriptors
+			\item Rank images by their recieved votes
+		\end{itemize}
+	\end{block}
+		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
+\end{frame}
+
 
 \section{Feature Detectors}
 
