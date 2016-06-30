@@ -58,6 +58,29 @@
         \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
+\subsection{Software}
+\begin{frame}{Software}
+\begin{block}{VlBenchmark,VLFeat}
+	\begin{itemize}
+		\item Feature extractors
+		\item Retrieval system
+		\item Performance measure
+		\item Image database
+	\end{itemize}
+\end{block}
+\begin{block}{OpenCV/mexopencv}
+	\begin{itemize}
+		\item Feature extractors
+	\end{itemize}
+\end{block}
+\begin{block}{ImageMagick,JXRLIB}
+	\begin{itemize}
+		\item Compression
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
 \subsection{Content Based Image Retrieval}
 \begin{frame}{Content Based Image Retrieval}
 \begin{block} {CBIR}
@@ -69,43 +92,18 @@
 \begin{block}{How to measure the influence of compression?}
 	\begin{itemize}
 		\item Use retrieval system and calculate some performance measure for the results
-		\item Use lossless compressed dataset and run retrieval system to calculate the performance
-		\item Compress dataset to different and formats ratios and do the same
+		\item Use reference database and run retrieval system to calculate the performance
+		\item Compress database to different and formats ratios and do the same
 		\item Compare results
 	\end{itemize}
 \end{block}
 
 \end{frame}
 
-\subsection{Software}
-\begin{frame}{Software}
-Matlab
-\begin{block}{VlBenchmark,VLFeat}
-	\begin{itemize}
-		\item feature extractors
-		\item retrieval system
-		\item performance measure
-		\item database
-	\end{itemize}
-\end{block}
-\begin{block}{OpenCV/mexopencv}
-	\begin{itemize}
-		\item feature extractors
-	\end{itemize}
-\end{block}
-C
-\begin{block}{ImageMagick,JXRLIB}
-	\begin{itemize}
-		\item compression
-	\end{itemize}
-\end{block}
-\end{frame}
-
-
 \section{Performance Evaluation}
 
 \begin{frame}{Table of Contents}
-        \tableofcontents[currentsection,currentsubsection]
+    \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
 \subsection{Recall Precision}
@@ -184,11 +182,11 @@ at a higher recall level
 \begin{block} {Oxford Buildings Dataset}
 	\begin{itemize}
 		\item 5062 images
-		\item compressed loss-less or with minimal loss in JPEG
-		\item collected from Flickr by searching for particular Oxford landmarks
-		\item manually annotated to generate ground truth for 11 different landmarks
+		\item Compressed loss-less or with minimal loss in JPEG
+		\item Collected from Flickr by searching for particular Oxford landmarks
+		\item Manually annotated to generate ground truth for 11 different landmarks
 		\item 5 queries per landmark
-		\item total of 55 queries
+		\item Total of 55 queries
 	\end{itemize}
 \end{block}
 	Random sampled subsets to limit compression and benchmark speed!
@@ -213,29 +211,16 @@ at a higher recall level
 VlBenchmark uses a slightly different scheme, but the calculation stays the same.
 	\begin{block}{How use the four query classes}
 		\begin{itemize}
-			\item good and ok images are relevant
-			\item junk will be ignored
-			\item bad will count as wrong
+			\item Good and ok images are relevant
+			\item Junk will be ignored
+			\item Bad will count as wrong
 		\end{itemize}
 	\end{block}
 Junk images do not influence precision or recall!
 \end{frame}
 
-
-\subsection{Compression}
-\begin{frame} {Estimate Compression Ratio}
-Because the dataset we used was JPEG compressed we first estimated the compression ratio.
-			\begin{block}{t}	
-				$s$ : avg size = 391.659 bytes.\\
-				$p$ :  avg pixels = 765.969 pixel.\\
-				$bpp$ : byte per pixel = 3.\\
-				$r$ : avg raw size = $p*bpp$ = 2297908.\\
-				$e$ : estimated ratio = $r/s = 5.867$.
-			\end{block}	
-			So we have a ratio smaller 6.
-\end{frame}
-
 \begin{frame}
+Because the dataset we used was JPEG compressed we first estimated the compression ratio.
 	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
 \end{frame}
 
@@ -276,14 +261,14 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose of the Feature Extractor is to calculate frames and corresponding descriptors from the image data.
 	\begin{block}{Local Feature Frames}
 		\begin{itemize}
-			\item search image for interest points
-			\item define a frame for that point(points,circles,elipses)
+			\item Search image for key points
+			\item Define a frame for that point(points,circles,oriented circles,...)
 		\end{itemize}
 	\end{block}	 
 	\begin{block}{Descriptor}
 		\begin{itemize}
-			\item compute descriptor using the image data defined by the sframe
-			\item every descriptor is a vector of same dimension
+			\item Compute descriptor using the image data defined by the frame
+			\item Every descriptor is a vector of same dimension
 		\end{itemize}
 	\end{block}
 	So we got n frames and n descriptors
@@ -292,14 +277,13 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \begin{frame} {Retrieval System}
 	\begin{block}{Ranking}
 		\begin{itemize}
-			\item calculate reference descriptor
-			\item calculate KNN's of the query descriptors
-			\item for every Descriptor of the KNN's Vote for the corresponding image of the descriptor
-			\item repeat for all reference descriptors
-			\item Rank images by their recieved votes
+			\item Calculate all descriptors(Database and reference)
+			\item For every descriptor in the reference image calculate KNN's of the query descriptors
+			\item For every KNN Vote for the corresponding image of the descriptor
+			\item Rank images by their received votes
 		\end{itemize}
 	\end{block}
-		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
+		\includegraphics[width=0.81\textwidth]{img/retrieved.jpg}
 \end{frame}
 
 
