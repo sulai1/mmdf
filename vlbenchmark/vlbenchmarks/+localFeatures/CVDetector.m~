@@ -3,7 +3,17 @@ classdef CVDetector < helpers.GenericInstaller ...
     % wrapper for opencv feature2d feature detectors
     % implement abstract methods and properties and the constructor to add
     % the functionality.
-   
+    
+    methods (Static) 
+        
+        function out = CVPATH(data)
+         persistent PATH;
+         if nargin
+            PATH = data;
+         end
+         out = PATH;
+      end
+    end
     
     properties (Abstract)
         % Opts have to be a struct. it will be used to parse the arguments and
@@ -24,6 +34,11 @@ classdef CVDetector < helpers.GenericInstaller ...
     
     methods
         function obj = CVDetector(name,varargin)
+            if ~isempty(obj.CVPATH())
+                addpath(obj.CVPATH());
+            else
+                fprintf('Could not find the mexopencv path.\nplease use the static property of CVDetector called CVPATH to set the path!');
+            end
             % Implement a constructor to parse any option passed to the
             % feature extractor and store them in the obj.Opts structure.
             
