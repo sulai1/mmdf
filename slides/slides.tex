@@ -369,6 +369,8 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
       \begin{itemize}
       \item Compare a pixel (x) with 26 pixels in current and adjucent scales (Green Circles)
       \item Scale a pixel (X) if larger/smaller than all 26 pixels
+ 	  \item Eliminating the Edge Response
+  	  \item Eliminating poor contrast points
       \end{itemize}
     \end{column}
     \begin{column}{.5\textwidth}
@@ -377,16 +379,23 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \end{columns}
 \end{frame}
 
-\begin{frame}{Accurate keypoint localization}
-  \begin{itemize}
-  \item Eliminating the Edge Response
-  \item Eliminating poor contrast points
-  \end{itemize}
+
+\begin{frame}[t]{Orientation Assignment}
+\begin{block}{For each remaining key point}
+  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size is equal to the size of the kernel for Gaussian Blur of amount $1.5*sigma$).  
+\end{block}
+  \tikzoverlay at (0cm,0.5cm) {
+  \includegraphics[scale=0.3]{img/keypoints.png}
+  };
 \end{frame}
 
-\begin{frame}{Orientation Assignment}
-  For each remaining key point: \\
-  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size, or the ``orientation collection region'', is equal to the size of the kernel for Gaussian Blur of amount 1.5*sigma).
+\begin{frame}[t]{Orientation Assignment}
+\begin{block}{For each remaining key point}
+  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size is equal to the size of the kernel for Gaussian Blur of amount $1.5*sigma$).  
+\end{block}[t]
+  \tikzoverlay at (0.1cm,0.5cm) {
+  \includegraphics[width=8.8cm,height=3.8cm]{img/window.png}
+  };
 \end{frame}
 
 \begin{frame}{Orientation Assignment}
@@ -402,11 +411,34 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \includegraphics[width=.8\textwidth]{img/histogramOrientation.png}
 \end{frame}
 
-\begin{frame}{2.Feature Descriptor}
-  \begin{itemize}
-  \item At this point each keypoint has location, scale and orientation
-  \item This means the Keypoints are invariant to viewpoint and illumination changes
-  \end{itemize}
+\begin{frame}{Orientation Assignment}
+ \begin{columns}
+    \begin{column}{.5\textwidth}
+    	\begin{tabular}{c}
+    		Gradient Magnitude\\
+    		$m(x,y)=\sqrt{(L(x+1,y)-L(x-1,y)^2)}$\\ $\overline{+(L(x,y+1)-L(x,y-1))^2}$\\
+      		\includegraphics[width=0.5\textwidth]{img/gradient.png}\\
+    		Gradient Orientation\\
+    		$\theta(x,y) = \tan^{-1} (\frac{L(x,y+1)-L(x,y-1)}{L(x+1,y)-L(x-1,y)})$
+    	\end{tabular}
+    \end{column}
+    \begin{column}{.3\textwidth}
+    	\begin{tabular}{c}
+    	   \includegraphics[width=\textwidth]{img/gradmag.png}\\
+    	   \includegraphics[width=\textwidth]{img/gradorientation.png}
+    	\end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame} {Orientation Assignment}
+	\begin{itemize}
+		\item A histogram is created for mentioned images (Gradient Orientation and Weighted Magnitude).
+		\item In this histogram, the 360 degrees of orientation are broken into 36 bins (each 10 degrees). 
+		\item Once you've done this for all pixels around the keypoint, the histogram will have a peak at some point.
+		\item Also, any peaks above 80% of the highest peak are converted into a new keypoint. This new keypoint has the same location and scale as the original. But it's orientation is equal to the other peak.
+		\item \textbf{So, orientation can split up one keypoint into multiple keypoints.}
+	\end{itemize}
 \end{frame}
 
 \begin{frame} {Feature Descriptor}
@@ -414,6 +446,10 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \end{frame}
 
 \begin{frame} {Feature Descriptor}
+\begin{itemize}
+	\item  4x4 arrays of 8 bin histogram is used
+	\item  a total of 128 features for one keypoint
+\end{itemize}
 %  \begin{itemize}
 %  4\times4 arrays of 8 bin histogram is used, this is a 128 dimensional vector
 %  \item a total of 128 features for one keypoint
@@ -433,32 +469,57 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \end{frame}
 
 \subsection{SURF}
-\begin{frame}
-	\begin{tabular}{|l|l|l|}
-		& SIFT & SURF\\
-	Key point detection & Local extrema De  
-	\end{tabular}
+\begin{frame}{SURF(Speed Up Robust Feature)}
+	\begin{itemize}
+		\item \textbf{Scale Space:} In SURF, square-shaped filters are used as an approximation of Gaussian smoothing.
+		\item \textbf{Key point detection:}Hessian matrix and Non-maximum suppression.
+		\item \textbf{Orientation:}Sliding orientation window using Gaussian weighted Haarwavelet responses from circular neighborhood
+		\item \textbf{Descriptor:}An oriented 4x4 grid that defines subregion. Wavelet responses computet for 5x5 samples of the subregion.
+
+	\end{itemize}
 \end{frame}
 \subsection{PHOW}
 \begin{frame}{PHOW}
-	The Phow features are a variation of dense SIFT descriptors, extracted at multiple scales. A color version, extracts descriptors on the three(rgb,hsv,...) channels and stacks them up.
+	The PHOW features are a variation of dense SIFT descriptors, extracted at multiple scales. A color version, extracts descriptors on the three color channels and stacks them up.
+	\begin{itemize}
+		\item When computing descriptors for many keypoints differing only by their position (and with null rotation), further simplifications are possible.
+	\end{itemize}
+		\includegraphics[width=8cm,height=4cm]{img/dsift.png}
+\end{frame}
+
+
+\subsection{ORB}
+\begin{frame}[t]{ORB(Oriented FAST and Rotated BRIEF)}
+	\begin{itemize}
+		\item FAST used to find key-points.
+		\item Unlike the orientation operator in SIFT, which can have multiple value on a single keypoint, the centroid operator gives a single dominant result.
+		\item Dimensionality reduction can be achieved by using hash functions that reduce SIFT descriptors to binary strings
+	\end{itemize}
+	
+	\begin{columns}
+	\begin{column}{.4\textwidth}
+	\begin{block}{Corner Detection}
+	A corner is detected if \textbf{n} contiguous pixels in the circle are brighter or darker than the pixel in the center
+	\end{block}
+	
+    \end{column}
+    \begin{column}{.6\textwidth}
+		\includegraphics[width=\textwidth]{img/fast.png}
+    \end{column}
+	\end{columns}
+	
 \end{frame}
 
 \section{Results}
-\begin{frame}{Results}
-  \begin{itemize}
-		\item plot of mAP over image file size
-		\item plot query precision
-		\item plot prc
-	\end{itemize}
-\end{frame}
-
 \subsection{Mean Average Precision}
 
 \begin{frame} {MAP over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (1cm,3cm) {
+	\includegraphics[width=0.6\textwidth]{img/refmap.png}
+};
 \tikzoverlay[text width=0.98\paperwidth] at (-1cm,1cm) {
   \begin{tabular}{ccc}
-	JPEG & 	JPEG 2000 & JPEG XR \\
+	JPEG & 	JPEG XR & JPEG 2000 \\
 	\includegraphics[width=0.3\paperwidth]{img/jpg_map.png}&
 	\includegraphics[width=0.3\paperwidth]{img/jxr_map.png}&
 	\includegraphics[width=0.3\paperwidth]{img/jp2_map.jpg}\\
