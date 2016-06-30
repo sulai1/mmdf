@@ -1,14 +1,15 @@
-\beamer@endinputifotherversion {3.33pt}
+\beamer@endinputifotherversion {3.36pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Performance Evaluation}{5}{0}{2}
 \beamer@subsectionintoc {2}{1}{Recall Precision}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{Mean Average Precision}{11}{0}{2}
-\beamer@sectionintoc {3}{Dataset/Compression}{12}{0}{3}
-\beamer@subsectionintoc {3}{1}{Dataset}{13}{0}{3}
-\beamer@subsectionintoc {3}{2}{Compression}{19}{0}{3}
-\beamer@sectionintoc {4}{Feature Detectors}{23}{0}{4}
-\beamer@sectionintoc {5}{Results}{27}{0}{5}
-\beamer@subsectionintoc {5}{1}{JPEG-2000}{28}{0}{5}
-\beamer@subsectionintoc {5}{2}{JPEG-XR}{31}{0}{5}
-\beamer@subsectionintoc {5}{3}{JPEG}{34}{0}{5}
+\beamer@subsectionintoc {2}{2}{Mean Average Precision}{12}{0}{2}
+\beamer@sectionintoc {3}{Experiment Setup}{13}{0}{3}
+\beamer@subsectionintoc {3}{1}{Dataset}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Compression}{17}{0}{3}
+\beamer@subsectionintoc {3}{3}{Retrieval System}{22}{0}{3}
+\beamer@sectionintoc {4}{Feature Detectors}{24}{0}{4}
+\beamer@sectionintoc {5}{Results}{28}{0}{5}
+\beamer@subsectionintoc {5}{1}{Mean Average Precision}{29}{0}{5}
+\beamer@subsectionintoc {5}{2}{Query Average Precision}{30}{0}{5}
+\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{34}{0}{5}

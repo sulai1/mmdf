@@ -14,6 +14,7 @@ function interp  = prcinterp( precisions, recalls, steps)
     for i=1:nSteps
         % we have to look for that particular recall
         recall = steps(i);
+        interp(i) = 0;
         for n=1:nCurves
             % now we have to find the element with the given recall
             indices = recalls{n}>=recall;

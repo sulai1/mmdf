@@ -7,7 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx,wrapfig,lipsum}
 \usepackage{multirow}
-
+\usepackage{tikz}
 
 
 \author{Sascha Wernegger}
@@ -29,6 +29,17 @@
     \usebeamertemplate{block end}%
   \end{actionenv}}
 \begin{document}
+
+\tikzset{
+  every overlay node/.style={anchor=north west},
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[every overlay node]
+}%
 
 \setcounter{tocdepth}{1}
 
@@ -93,12 +104,14 @@
 \end{frame}
 \subsection{Recall Precision}
 \begin{frame}{Recall Precision}
-	\begin{tabular}{ll}
 
+\begin{itemize}
+	\item \textbf{Precision:} $ |{relevant documents}\cap{retrieved documents}| $
+\end{itemize}
+
+\begin{wrapfigure}{t}{5.cm}
 		\includegraphics[width=0.5\textwidth]{img/RecallPrecision.jpg}
-		\includegraphics[width=0.5\textwidth]{img/precision_recall.png}
-
-	\end{tabular}
+\end{wrapfigure} 
 
 \end{frame}
 
@@ -146,15 +159,13 @@ at a higher recall level
 
 \begin{wrapfigure}{l}{6.2cm}
 \includegraphics[width=6.5cm]{img/map.png} 
-\end{wrapfigure} 
-\textbf{average precision of a query is:} $1/n\sum_{i=1}^n p(i)$ \\
-n = number of relevant documents retrieved.\\
-p(i) = precision of relevant document i.\\
-\textbf{mean average precision:}
+\end{wrapfigure}
+\textbf{average precision} of a query is the average precision from all relevant documents.\\
+\textbf{mean average precision} is the average of the query average Prexision.
 \end{frame}
 
 
-\section{Dataset/Compression}
+\section{Experiment Setup}
 
 \begin{frame}{Table of Contents}
         \tableofcontents[currentsection,currentsubsection]
@@ -175,17 +186,6 @@ p(i) = precision of relevant document i.\\
 	Random sampled subsets to limit compression and benchmark speed!
 \end{frame}
 
-\begin{frame} {Estimate Compression Ratio}
-Because the dataset we used was JPEG compressed we first estimated the compression ratio.
-			\begin{block}{t}	
-				$s$ : avg size = 391.659 bytes.\\
-				$p$ :  avg pixels = 765.969 pixel.\\
-				$bpp$ : byte per pixel = 3.\\
-				$r$ : avg raw size = $p*bpp$ = 2297908.\\
-				$e$ : estimated ratio = $r/s = 5.867$.
-			\end{block}	
-			So we have a ratio smaller 6.
-\end{frame}
 
 \begin{frame}{Queries}
 	The query consists of a reference image and 4 query sets:
@@ -198,7 +198,6 @@ Because the dataset we used was JPEG compressed we first estimated the compressi
 	\begin{tabular}{ll}
 		\includegraphics[width=0.7\textwidth]{img/query.jpg}
 	\end{tabular}
-	now similarity between these image is measured
 \end{frame}
 
 
@@ -214,37 +213,24 @@ VlBenchmark uses a slightly different scheme, but the calculation stays the same
 Junk images do not influence precision or recall!
 \end{frame}
 
-\begin{frame} {Generic Local Feature Extractor}
-The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose of the Feature Extractor is to calculate frames and corresponding descriptors from the image data.
-	\begin{block}{Local Feature Frames}
-		\begin{itemize}
-			\item search image for interest points
-			\item define a frame for that point(points,circles,elipses)
-		\end{itemize}
-	\end{block}	 
-	\begin{block}{Descriptor}
-		\begin{itemize}
-			\item compute descriptor using the image data defined by the sframe
-			\item every descriptor is a vector of same dimension
-		\end{itemize}
-	\end{block}
-	So we got n frames and n descriptors
-\end{frame}
-
-\begin{frame} {Retrieval System}
-	\begin{block}{Ranking}
-		\begin{itemize}
-			\item calculate KNN for the every reference descriptor
-			\item vote with descriptor distance for the image
-			\item normalize
-			\item sort images after voting
-		\end{itemize}
-	\end{block}
-		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
-\end{frame}
-
 
 \subsection{Compression}
+\begin{frame} {Estimate Compression Ratio}
+Because the dataset we used was JPEG compressed we first estimated the compression ratio.
+			\begin{block}{t}	
+				$s$ : avg size = 391.659 bytes.\\
+				$p$ :  avg pixels = 765.969 pixel.\\
+				$bpp$ : byte per pixel = 3.\\
+				$r$ : avg raw size = $p*bpp$ = 2297908.\\
+				$e$ : estimated ratio = $r/s = 5.867$.
+			\end{block}	
+			So we have a ratio smaller 6.
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
+\end{frame}
+
 \begin{frame}{Compression}
 \begin{tabular}{|l||c|c|c|}
 \hline
@@ -275,8 +261,36 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 	\end{figure}
 \end{frame}
 
-\begin{frame}
-	\includegraphics[width=0.8\textwidth]{img/jpg-ratio.png}
+\subsection{Retrieval System}
+
+\begin{frame} {Retrieval System}
+	\begin{block}{Ranking}
+		\begin{itemize}
+			\item calculate KNN for the every reference descriptor
+			\item vote with descriptor distance for the image
+			\item normalize
+			\item sort images after voting
+		\end{itemize}
+	\end{block}
+		\includegraphics[width=0.5\textwidth]{img/retrieved.jpg}
+\end{frame}
+
+
+\begin{frame} {Generic Local Feature Extractor}
+The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose of the Feature Extractor is to calculate frames and corresponding descriptors from the image data.
+	\begin{block}{Local Feature Frames}
+		\begin{itemize}
+			\item search image for interest points
+			\item define a frame for that point(points,circles,elipses)
+		\end{itemize}
+	\end{block}	 
+	\begin{block}{Descriptor}
+		\begin{itemize}
+			\item compute descriptor using the image data defined by the sframe
+			\item every descriptor is a vector of same dimension
+		\end{itemize}
+	\end{block}
+	So we got n frames and n descriptors
 \end{frame}
 
 \section{Feature Detectors}
@@ -335,43 +349,71 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 	\end{itemize}
 \end{frame}
 
-\subsection{JPEG-2000}
+\subsection{Mean Average Precision}
+
 \begin{frame} {MAP over Ratio}
-	\includegraphics[width=0.8\textwidth]{img/jp2_map.jpg}
+\tikzoverlay[text width=0.98\paperwidth] at (-1cm,1cm) {
+  \begin{tabular}{ccc}
+	JPEG & 	JPEG 2000 & JPEG XR \\
+	\includegraphics[width=0.3\paperwidth]{img/jpg_map.png}&
+	\includegraphics[width=0.3\paperwidth]{img/jxr_map.png}&
+	\includegraphics[width=0.3\paperwidth]{img/jp2_map.jpg}\\
+  \end{tabular}
+};
 \end{frame}
 
-\begin{frame} {Query AP over Ratio}
-	\includegraphics[width=1\textwidth]{img/jp2_queryAp.jpg}
+\subsection{Query Average Precision}
+\begin{frame} {SIFT Query AP over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.97\textwidth]{img/siftqap.png}
+	};
 \end{frame}
 
-\begin{frame} {PRC over Ratio}
-	\includegraphics[width=1\textwidth]{img/jp2_prc.jpg}
+\begin{frame} {SURF Query AP over Ratio}
+
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/surfqap.png}
+	};
 \end{frame}
 
-\subsection{JPEG-XR}
-\begin{frame} {MAP over Ratio}
-	\includegraphics[width=0.8\textwidth]{img/jxr_map.png}
+\begin{frame} {ORB Query AP over Ratio}
+
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/orbqap.png}
+	};
 \end{frame}
 
-\begin{frame} {Query AP over Ratio}
-	\includegraphics[width=1\textwidth]{img/jxr_queryAp.png}
+\begin{frame} {PHOW Query AP over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/phowqap.png}
+	};
 \end{frame}
 
-\begin{frame} {PRC over Ratio}
-	\includegraphics[width=1\textwidth]{img/jxr_prc.png}
+
+\subsection{Precision Recall Curve}
+\begin{frame} {SIFT PRC over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/siftprc.png}
+	};
 \end{frame}
 
-\subsection{JPEG}
-\begin{frame} {MAP over Ratio}
-	\includegraphics[width=0.8\textwidth]{img/jpg_map.png}
+\begin{frame} {SURF PRC over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/surfprc.png}
+	};
 \end{frame}
 
-\begin{frame} {Query AP over Ratio}
-	\includegraphics[width=1\textwidth]{img/jpg_queryAp.png}
+\begin{frame} {ORB PRC over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=1\textwidth]{img/orbprc.png}
+	};
 \end{frame}
 
-\begin{frame} {PRC over Ratio}
-	\includegraphics[width=1\textwidth]{img/jpg_prc.png}
+\begin{frame} {PHOW PRC over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
+	\includegraphics[width=0.95\paperwidth]{img/phow.png}
+	};
 \end{frame}
+
 
 \end{document}
