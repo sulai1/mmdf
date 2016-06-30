@@ -9,6 +9,7 @@
 \usepackage{multirow}
 \usepackage{tikz}
 
+\setbeamertemplate{footline}[frame number]
 
 \author{Alexander Kollert\\ Babak Maser\\Sascha Wernegger}
 \title{Key-Point based Image retrival under ISO still image compression standards (JPEG,JEPG2000,JPEG XR))}
@@ -61,16 +62,16 @@
 \begin{frame}{Content Based Image Retrieval}
 \begin{block} {CBIR}
 	\begin{itemize}
-		\item \textbf{retrieval:} search images in large dataset
-		\item \textbf{content based:} use image data of reference to find similar images
+		\item \textbf{retrieval:} Search for similar images in large database
+		\item \textbf{content based:} Use image data of reference to find similar images
 	\end{itemize}
 \end{block}
 \begin{block}{How to measure the influence of compression?}
 	\begin{itemize}
-		\item use retrieval system and calculate some performance measure for the results
+		\item Use retrieval system and calculate some performance measure for the results
 		\item Use lossless compressed dataset and run retrieval system to calculate the performance
 		\item Compress dataset to different and formats ratios and do the same
-		\item interpret results
+		\item Compare results
 	\end{itemize}
 \end{block}
 
@@ -78,19 +79,21 @@
 
 \subsection{Software}
 \begin{frame}{Software}
+Matlab
 \begin{block}{VlBenchmark,VLFeat}
 	\begin{itemize}
 		\item feature extractors
 		\item retrieval system
 		\item performance measure
-		\item dataset
+		\item database
 	\end{itemize}
 \end{block}
-\begin{block}{OpenCV}
+\begin{block}{OpenCV/mexopencv}
 	\begin{itemize}
 		\item feature extractors
 	\end{itemize}
 \end{block}
+C
 \begin{block}{ImageMagick,JXRLIB}
 	\begin{itemize}
 		\item compression
@@ -129,10 +132,11 @@
 \end{wrapfigure} 
 
 To visualize precision and recall, we plot precision over recall.\\
-If we have many queries, it is easier to interpret an averaged interpolated precision recall curve
+If we have many queries, it is easier to interpret an interpolated precision recall curve
 \end{frame}
 
-\begin{frame}{Interpolate PRC}
+\subsection{11-Point Precision-Recall Curve}
+\begin{frame}{11-Point Precision-Recall Curve}
 \begin{tabular}{ll}
 \multirow{5}{*}{\includegraphics[width=0.45\textwidth]{img/prc.png} }
 &Calculate precision at each\\
@@ -143,7 +147,7 @@ If we have many queries, it is easier to interpret an averaged interpolated prec
 \end{tabular}
 \end{frame}
 
-\begin{frame}{Interpolate PRC}
+\begin{frame}{11-Point Precision-Recall Curve}
 \begin{wrapfigure}{tr}{6.5cm}
 \includegraphics[width=5cm]{img/prc_average.png}
 \end{wrapfigure} 
@@ -317,46 +321,6 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
     \item Feature matching
     \end{enumerate}
   \end{itemize}
-\end{frame}
-
-%% \begin{frame} {Extracting key points (feature) / Detection of scale-space extrema}
-%%   \begin{enumerate}
-%%   \item Local extrema detection: \\
-%%     \small
-%%     The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian (DoG) function to identify potential interest points that are invariant to scale and orientation.
-%%     \normalsize
-%%   \item Accurate keypoint localization
-%%   \item Orientation assignment
-%%   \end{enumerate}
-%% \end{frame}
-
-\begin{frame}{Local extrema detection}
-  \begin{itemize}
-  \item Find the points, whose surrounding patches (with some scale) are distinctive
-  \item An approximation to the scale-normalized Laplacian of Gaussian 
-    %% \( L(x,y,\sigma) = G(x,y,\sigma) * I(x,y) \) \\
-    %% \( G(x,y,\sigma) = \frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2} \) \\
-    %% \( D(x,y,\sigma) = (G(x,y,k\sigma) - G(x,y,\sigma) - G(x,y,\sigma)) * I(x,y) = L(x,y,k\sigma) - L(x,y,\sigma) \) \\
-    %% \vfill
-    %% \tiny{
-    %%   L is blur Image \\
-    %%   G is Gaussian Blur operator \\
-    %%   I is an Image \\
-    %%   x,y are the location coordination \\
-    %%   \(\sigma \) is Scale parameter. The amount of blur (greater value, greater the blur) \\
-    %%   The * is the convolution operation in x and y. It applies Gaussian blur G onto the image I
-    %% }
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Difference of Gaussian}
-  \begin{enumerate}
-  \item A = Convolve image with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
-  \item B = Convolve A with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
-  \item DoG (Difference of Gaussian) = A – B
-  \item Downsample B
-  \end{enumerate}
 \end{frame}
 
 \begin{frame}{Difference of Gaussian}
@@ -578,6 +542,12 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
 	\includegraphics[width=0.95\paperwidth]{img/phow.png}
 	};
+\end{frame}
+
+\begin{frame}{References}
+	\begin{itemize}
+		\item 
+	\end{itemize}
 \end{frame}
 
 

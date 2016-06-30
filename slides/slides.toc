@@ -5,17 +5,18 @@
 \beamer@subsectionintoc {1}{2}{Software}{4}{0}{1}
 \beamer@sectionintoc {2}{Performance Evaluation}{5}{0}{2}
 \beamer@subsectionintoc {2}{1}{Recall Precision}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{Mean Average Precision}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{11-Point Precision-Recall Curve}{9}{0}{2}
+\beamer@subsectionintoc {2}{3}{Mean Average Precision}{11}{0}{2}
 \beamer@sectionintoc {3}{Experiment Setup}{12}{0}{3}
 \beamer@subsectionintoc {3}{1}{Dataset}{13}{0}{3}
 \beamer@subsectionintoc {3}{2}{Compression}{16}{0}{3}
 \beamer@subsectionintoc {3}{3}{Retrieval System}{21}{0}{3}
 \beamer@sectionintoc {4}{Feature Detectors}{23}{0}{4}
 \beamer@subsectionintoc {4}{1}{SIFT}{24}{0}{4}
-\beamer@subsectionintoc {4}{2}{SURF}{37}{0}{4}
-\beamer@subsectionintoc {4}{3}{PHOW}{38}{0}{4}
-\beamer@subsectionintoc {4}{4}{ORB}{39}{0}{4}
-\beamer@sectionintoc {5}{Results}{40}{0}{5}
-\beamer@subsectionintoc {5}{1}{Mean Average Precision}{40}{0}{5}
-\beamer@subsectionintoc {5}{2}{Query Average Precision}{41}{0}{5}
-\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{45}{0}{5}
+\beamer@subsectionintoc {4}{2}{SURF}{35}{0}{4}
+\beamer@subsectionintoc {4}{3}{PHOW}{36}{0}{4}
+\beamer@subsectionintoc {4}{4}{ORB}{37}{0}{4}
+\beamer@sectionintoc {5}{Results}{38}{0}{5}
+\beamer@subsectionintoc {5}{1}{Mean Average Precision}{38}{0}{5}
+\beamer@subsectionintoc {5}{2}{Query Average Precision}{39}{0}{5}
+\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{43}{0}{5}
