@@ -233,6 +233,7 @@ Because the dataset we used was JPEG compressed we first estimated the compressi
 \end{frame}
 
 \begin{frame}{Compression}
+Achieved compression ratio compared to the original(391.659 bytes). 
 \begin{tabular}{|l||c|c|c|}
 \hline
 & jpg & jxr & jp2 \\
@@ -241,8 +242,7 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 \hline
 \end{tabular}
 \begin{figure}
-\includegraphics[width=0.7\textwidth]{img/compression.png}
-		\caption{light is ratio compared to jpg, dark compared to avg. raw size}
+\includegraphics[width=0.6\textwidth]{img/compression.png}
 \end{figure}
 \end{frame}
 
@@ -255,11 +255,12 @@ min avg size in bytes & 13229 & 1756 & 511 \\
 
 
 \begin{frame}{Comparison}
-	\begin{figure}
-		\includegraphics[width=0.35\textwidth]{img/jpg.jpg}
-		\includegraphics[width=0.35\textwidth]{img/jp2.jpg}
-		\includegraphics[width=0.35\textwidth]{img/jxr.jpg}
-	\end{figure}
+\begin{tabular}{ccc}
+	 jpg & jxr & jp2 \\ 
+		\includegraphics[width=0.3\textwidth]{img/jpg.jpg}&
+		\includegraphics[width=0.3\textwidth]{img/jp2.jpg}&
+		\includegraphics[width=0.3\textwidth]{img/jxr.jpg}\\
+\end{tabular}
 \end{frame}
 
 \subsection{Retrieval System}
@@ -301,6 +302,7 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
         \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
+\subsection{SIFT}
 \begin{frame}{SIFT (Scale-Invariant Feature Transform)}
   \begin{itemize}
   \item SIFT Algorithm is comprised by 3 steps:
@@ -428,6 +430,29 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
       \includegraphics[width=.7\textwidth]{img/hist_rand.png}
     \end{column}
   \end{columns}
+\end{frame}
+
+
+
+\subsection{SURF}
+\begin{frame}
+	\begin{tabular}{|l|l|l|}
+		& SIFT & SURF\\
+	Key point detection & Local extrema De  
+	\end{tabular}
+\end{frame}
+\subsection{PHOW}
+\begin{frame}{PHOW}
+	The Phow features are a variation of dense SIFT descriptors, extracted at multiple scales. A color version, extracts descriptors on the three(rgb,hsv,...) channels and stacks them up.
+\end{frame}
+
+\section{Results}
+\begin{frame}{Results}
+  \begin{itemize}
+		\item plot of mAP over image file size
+		\item plot query precision
+		\item plot prc
+	\end{itemize}
 \end{frame}
 
 \subsection{Mean Average Precision}
