@@ -9,9 +9,10 @@
 \usepackage{multirow}
 \usepackage{tikz}
 
+\setbeamertemplate{footline}[frame number]
 
-\author{Sascha Wernegger,Babak Maser, Alexander Kollert}
-\title{Key-Point based Image retrival under ISO still image compression standards (JPEG,JEPG2000,JPEG XR)}
+\author{Alexander Kollert\\ Babak Maser\\Sascha Wernegger}
+\title{Key-Point based Image retrival under ISO still image compression standards (JPEG,JEPG2000,JPEG XR))}
 %\setbeamercovered{transparent} 
 %\setbeamertemplate{navigation symbols}{} 
 %\logo{} 
@@ -61,16 +62,16 @@
 \begin{frame}{Content Based Image Retrieval}
 \begin{block} {CBIR}
 	\begin{itemize}
-		\item \textbf{retrieval:} search images in large dataset
-		\item \textbf{content based:} use image data of reference to find similar images
+		\item \textbf{retrieval:} Search for similar images in large database
+		\item \textbf{content based:} Use image data of reference to find similar images
 	\end{itemize}
 \end{block}
 \begin{block}{How to measure the influence of compression?}
 	\begin{itemize}
-		\item use retrieval system and calculate some performance measure for the results
+		\item Use retrieval system and calculate some performance measure for the results
 		\item Use lossless compressed dataset and run retrieval system to calculate the performance
 		\item Compress dataset to different and formats ratios and do the same
-		\item interpret results
+		\item Compare results
 	\end{itemize}
 \end{block}
 
@@ -78,19 +79,21 @@
 
 \subsection{Software}
 \begin{frame}{Software}
+Matlab
 \begin{block}{VlBenchmark,VLFeat}
 	\begin{itemize}
 		\item feature extractors
 		\item retrieval system
 		\item performance measure
-		\item dataset
+		\item database
 	\end{itemize}
 \end{block}
-\begin{block}{OpenCV}
+\begin{block}{OpenCV/mexopencv}
 	\begin{itemize}
 		\item feature extractors
 	\end{itemize}
 \end{block}
+C
 \begin{block}{ImageMagick,JXRLIB}
 	\begin{itemize}
 		\item compression
@@ -104,35 +107,39 @@
 \begin{frame}{Table of Contents}
         \tableofcontents[currentsection,currentsubsection]
 \end{frame}
+
 \subsection{Recall Precision}
 \begin{frame}{Recall Precision}
-
-\begin{itemize}
-	\item \textbf{Precision:} $ |\textbf{relevant documents}\cap\textbf{retrieved documents}| \over |\textbf{relevant documents}|$
-	\item \textbf{Recall:} $ |\textbf{relevant documents}\cap\textbf{retrieved documents}| \over |\textbf{retrieved documents}|$
-\end{itemize}
-
-		\includegraphics[width=0.5\textwidth]{img/RecallPrecision.jpg}
-
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			\includegraphics[width=\textwidth]{img/PrecisionRecall1.png}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\includegraphics[width=1.2\textwidth]{img/Precisionrecall.png}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Recall Precision}
 
-\includegraphics[width=0.9\textwidth]{img/map.png}
+\includegraphics[width=0.85\textwidth]{img/map.png}
 
 \end{frame}
 
 
 \begin{frame}{Precision Recall Curves}
 \begin{wrapfigure}{tr}{6.5cm}
-\includegraphics[width=5cm]{img/multi_prc.png}
+\begin{center}
+	\includegraphics[width=5cm]{img/multi_prc.png}
+\end{center}
 \end{wrapfigure} 
 
 To visualize precision and recall, we plot precision over recall.\\
-If we have many queries, it is easier to interpret an averaged interpolated precision recall curve
+If we have many queries, it is easier to interpret an interpolated precision recall curve
 \end{frame}
 
-\begin{frame}{Interpolate PRC}
+\subsection{11-Point Precision-Recall Curve}
+\begin{frame}{11-Point Precision-Recall Curve}
 \begin{tabular}{ll}
 \multirow{5}{*}{\includegraphics[width=0.45\textwidth]{img/prc.png} }
 &Calculate precision at each\\
@@ -143,7 +150,7 @@ If we have many queries, it is easier to interpret an averaged interpolated prec
 \end{tabular}
 \end{frame}
 
-\begin{frame}{Interpolate PRC}
+\begin{frame}{11-Point Precision-Recall Curve}
 \begin{wrapfigure}{tr}{6.5cm}
 \includegraphics[width=5cm]{img/prc_average.png}
 \end{wrapfigure} 
@@ -319,48 +326,8 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \end{itemize}
 \end{frame}
 
-%% \begin{frame} {Extracting key points (feature) / Detection of scale-space extrema}
-%%   \begin{enumerate}
-%%   \item Local extrema detection: \\
-%%     \small
-%%     The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian (DoG) function to identify potential interest points that are invariant to scale and orientation.
-%%     \normalsize
-%%   \item Accurate keypoint localization
-%%   \item Orientation assignment
-%%   \end{enumerate}
-%% \end{frame}
-
-\begin{frame}{Local extrema detection}
-  \begin{itemize}
-  \item Find the points, whose surrounding patches (with some scale) are distinctive
-  \item An approximation to the scale-normalized Laplacian of Gaussian 
-    %% \( L(x,y,\sigma) = G(x,y,\sigma) * I(x,y) \) \\
-    %% \( G(x,y,\sigma) = \frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2} \) \\
-    %% \( D(x,y,\sigma) = (G(x,y,k\sigma) - G(x,y,\sigma) - G(x,y,\sigma)) * I(x,y) = L(x,y,k\sigma) - L(x,y,\sigma) \) \\
-    %% \vfill
-    %% \tiny{
-    %%   L is blur Image \\
-    %%   G is Gaussian Blur operator \\
-    %%   I is an Image \\
-    %%   x,y are the location coordination \\
-    %%   \(\sigma \) is Scale parameter. The amount of blur (greater value, greater the blur) \\
-    %%   The * is the convolution operation in x and y. It applies Gaussian blur G onto the image I
-    %% }
-  \end{itemize}
-\end{frame}
-
-
 \begin{frame}{Difference of Gaussian}
-  \begin{enumerate}
-  \item A = Convolve image with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
-  \item B = Convolve A with vertical and horizontal 1D Gaussians, \( \sigma = \sqrt{2} \)
-  \item DoG (Difference of Gaussian) = A – B
-  \item Downsample B
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Difference of Gaussian}
-  \includegraphics[width=0.9\textwidth]{img/DoG.png}
+  \includegraphics[width=\textwidth,height=0.9\textheight]{img/DoG.png}
 \end{frame}
 
 \begin{frame}{Accurate keypoint localization}
@@ -369,7 +336,8 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
       \begin{itemize}
       \item Compare a pixel (x) with 26 pixels in current and adjucent scales (Green Circles)
       \item Scale a pixel (X) if larger/smaller than all 26 pixels
-      \item Large number of extrema, computationally expensive
+      \item Eliminating the Edge Response
+      \item Eliminating poor contrast points
       \end{itemize}
     \end{column}
     \begin{column}{.5\textwidth}
@@ -378,20 +346,26 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \end{columns}
 \end{frame}
 
-\begin{frame}{Accurate keypoint localization}
-  \begin{itemize}
-  \item Eliminating the Edge Response
-  \item Eliminating poor contrast points
-  \end{itemize}
-\end{frame}
-
 \begin{frame}
   \center\Huge{\( feature_{i} = x_{i}, y_{i}, s_{i} \)}
 \end{frame}
 
-\begin{frame}{Orientation Assignment}
-  For each remaining key point: \\
-  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size, or the ``orientation collection region'', is equal to the size of the kernel for Gaussian Blur of amount 1.5*sigma).
+\begin{frame}[t]{Orientation Assignment}
+\begin{block}{For each remaining key point}
+  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size is equal to the size of the kernel for Gaussian Blur of amount $1.5*sigma$).  
+\end{block}
+  \tikzoverlay at (0cm,0.5cm) {
+  \includegraphics[scale=0.3]{img/keypoints.png}
+  };
+\end{frame}
+
+\begin{frame}[t]{Orientation Assignment}
+\begin{block}{For each remaining key point}
+  Choose surrounding N x N window at DOG level it was detected  (Size of the window:The window size is equal to the size of the kernel for Gaussian Blur of amount $1.5*sigma$).  
+\end{block}[t]
+  \tikzoverlay at (0.1cm,0.5cm) {
+  \includegraphics[width=8.8cm,height=3.8cm]{img/window.png}
+  };
 \end{frame}
 
 \begin{frame}{Orientation Assignment}
@@ -407,11 +381,34 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \includegraphics[width=.8\textwidth]{img/histogramOrientation.png}
 \end{frame}
 
-\begin{frame}{2.Feature Descriptor}
-  \begin{itemize}
-  \item At this point each keypoint has location, scale and orientation
-  \item This means the Keypoints are invariant to viewpoint and illumination changes
-  \end{itemize}
+\begin{frame}{Orientation Assignment}
+ \begin{columns}
+    \begin{column}{.5\textwidth}
+    	\begin{tabular}{c}
+    		Gradient Magnitude\\
+    		$m(x,y)=\sqrt{(L(x+1,y)-L(x-1,y)^2)}$\\ $\overline{+(L(x,y+1)-L(x,y-1))^2}$\\
+      		\includegraphics[width=0.5\textwidth]{img/gradient.png}\\
+    		Gradient Orientation\\
+    		$\theta(x,y) = \tan^{-1} (\frac{L(x,y+1)-L(x,y-1)}{L(x+1,y)-L(x-1,y)})$
+    	\end{tabular}
+    \end{column}
+    \begin{column}{.3\textwidth}
+    	\begin{tabular}{c}
+    	   \includegraphics[width=\textwidth]{img/gradmag.png}\\
+    	   \includegraphics[width=\textwidth]{img/gradorientation.png}
+    	\end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame} {Orientation Assignment}
+	\begin{itemize}
+		\item A histogram is created for mentioned images (Gradient Orientation and Weighted Magnitude).
+		\item In this histogram, the 360 degrees of orientation are broken into 36 bins (each 10 degrees). 
+		\item Once you've done this for all pixels around the keypoint, the histogram will have a peak at some point.
+		\item Also, any peaks above 80% of the highest peak are converted into a new keypoint. This new keypoint has the same location and scale as the original. But it's orientation is equal to the other peak.
+		\item \textbf{So, orientation can split up one keypoint into multiple keypoints.}
+	\end{itemize}
 \end{frame}
 
 \begin{frame} {Feature Descriptor}
@@ -419,6 +416,10 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \end{frame}
 
 \begin{frame} {Feature Descriptor}
+\begin{itemize}
+	\item  4x4 arrays of 8 bin histogram is used
+	\item  a total of 128 features for one keypoint
+\end{itemize}
 %  \begin{itemize}
 %  4\times4 arrays of 8 bin histogram is used, this is a 128 dimensional vector
 %  \item a total of 128 features for one keypoint
@@ -437,36 +438,59 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
   \end{columns}
 \end{frame}
 
-
-
 \subsection{SURF}
-\begin{frame}
-	\begin{tabular}{|l|l|l|}
-		& SIFT & SURF\\
-	Key point detection & Local extrema De  
-	\end{tabular}
+\begin{frame}{SURF(Speed Up Robust Feature)}
+	\begin{itemize}
+		\item \textbf{Scale Space:} In SURF, square-shaped filters are used as an approximation of Gaussian smoothing.
+		\item \textbf{Key point detection:}Hessian matrix and Non-maximum suppression.
+		\item \textbf{Orientation:}Sliding orientation window using Gaussian weighted Haarwavelet responses from circular neighborhood
+		\item \textbf{Descriptor:}An oriented 4x4 grid that defines subregion. Wavelet responses computet for 5x5 samples of the subregion.
+
+	\end{itemize}
 \end{frame}
 \subsection{PHOW}
 \begin{frame}{PHOW}
-	The Phow features are a variation of dense SIFT descriptors, extracted at multiple scales. A color version, extracts descriptors on the three(rgb,hsv,...) channels and stacks them up.
+	The PHOW features are a variation of dense SIFT descriptors, extracted at multiple scales. A color version, extracts descriptors on the three color channels and stacks them up.
+	\begin{itemize}
+		\item When computing descriptors for many keypoints differing only by their position (and with null rotation), further simplifications are possible.
+	\end{itemize}
+		\includegraphics[width=8cm,height=4cm]{img/dsift.png}
+\end{frame}
+
+
+\subsection{ORB}
+\begin{frame}[t]{ORB(Oriented FAST and Rotated BRIEF)}
+	\begin{itemize}
+		\item FAST used to find key-points.
+		\item Unlike the orientation operator in SIFT, which can have multiple value on a single keypoint, the centroid operator gives a single dominant result.
+		\item Dimensionality reduction can be achieved by using hash functions that reduce SIFT descriptors to binary strings
+	\end{itemize}
+	
+	\begin{columns}
+	\begin{column}{.4\textwidth}
+	\begin{block}{Corner Detection}
+	A corner is detected if \textbf{n} contiguous pixels in the circle are brighter or darker than the pixel in the center
+	\end{block}
+	
+    \end{column}
+    \begin{column}{.6\textwidth}
+		\includegraphics[width=\textwidth]{img/fast.png}
+    \end{column}
+	\end{columns}
+	
 \end{frame}
 
 \section{Results}
-\begin{frame}{Results}
-  \begin{itemize}
-		\item plot of mAP over image file size
-		\item plot query precision
-		\item plot prc
-	\end{itemize}
-\end{frame}
-
 \subsection{Mean Average Precision}
 
 \begin{frame} {MAP over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (1cm,3cm) {
+	\includegraphics[width=0.6\textwidth]{img/refmap.png}
+};
 \tikzoverlay[text width=0.98\paperwidth] at (-1cm,1cm) {
   \begin{tabular}{ccc}
-	JPEG & 	JPEG 2000 & JPEG XR \\
-	\includegraphics[width=0.3\paperwidth]{img/jpg_map.png}&
+	JPEG & 	JPEG XR & JPEG 2000 \\
+	\includegraphics[width=0.3\paperwidth,height=2.9cm]{img/jpg_map.png}&
 	\includegraphics[width=0.3\paperwidth]{img/jxr_map.png}&
 	\includegraphics[width=0.3\paperwidth]{img/jp2_map.jpg}\\
   \end{tabular}
@@ -524,6 +548,12 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \tikzoverlay[text width=0.98\paperwidth] at (-0.8cm,1cm) {
 	\includegraphics[width=0.95\paperwidth]{img/phow.png}
 	};
+\end{frame}
+
+\begin{frame}
+\begin{center}
+	\scalebox{3}[3]{Thank You!}
+\end{center}
 \end{frame}
 
 

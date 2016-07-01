@@ -1,5 +1,5 @@
 figure(1);clf;
-open('jp2_map.fig');
+open('jpg_map.fig');
 axh = gca;
 
 Data = get(axh, 'Children');
