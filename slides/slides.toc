@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
+\beamer@endinputifotherversion {3.33pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Content Based Image Retrieval}{3}{0}{1}
@@ -13,10 +13,10 @@
 \beamer@subsectionintoc {3}{3}{Retrieval System}{21}{0}{3}
 \beamer@sectionintoc {4}{Feature Detectors}{23}{0}{4}
 \beamer@subsectionintoc {4}{1}{SIFT}{24}{0}{4}
-\beamer@subsectionintoc {4}{2}{SURF}{35}{0}{4}
-\beamer@subsectionintoc {4}{3}{PHOW}{36}{0}{4}
-\beamer@subsectionintoc {4}{4}{ORB}{37}{0}{4}
-\beamer@sectionintoc {5}{Results}{38}{0}{5}
-\beamer@subsectionintoc {5}{1}{Mean Average Precision}{38}{0}{5}
-\beamer@subsectionintoc {5}{2}{Query Average Precision}{39}{0}{5}
-\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{43}{0}{5}
+\beamer@subsectionintoc {4}{2}{SURF}{36}{0}{4}
+\beamer@subsectionintoc {4}{3}{PHOW}{37}{0}{4}
+\beamer@subsectionintoc {4}{4}{ORB}{38}{0}{4}
+\beamer@sectionintoc {5}{Results}{39}{0}{5}
+\beamer@subsectionintoc {5}{1}{Mean Average Precision}{39}{0}{5}
+\beamer@subsectionintoc {5}{2}{Query Average Precision}{40}{0}{5}
+\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{44}{0}{5}
