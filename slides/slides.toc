@@ -17,5 +17,5 @@
 \beamer@subsectionintoc {4}{4}{ORB}{36}{0}{4}
 \beamer@sectionintoc {5}{Results}{37}{0}{5}
 \beamer@subsectionintoc {5}{1}{Mean Average Precision}{37}{0}{5}
-\beamer@subsectionintoc {5}{2}{Query Average Precision}{38}{0}{5}
-\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{42}{0}{5}
+\beamer@subsectionintoc {5}{2}{Query Average Precision}{39}{0}{5}
+\beamer@subsectionintoc {5}{3}{Precision Recall Curve}{43}{0}{5}

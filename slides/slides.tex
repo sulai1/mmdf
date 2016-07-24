@@ -465,15 +465,19 @@ The Ranking in VlBenchmark is done using Local Feature Extractors. The purpose o
 \subsection{Mean Average Precision}
 
 \begin{frame} {MAP over Ratio}
-\tikzoverlay[text width=0.98\paperwidth] at (1cm,3cm) {
-	\includegraphics[width=0.6\textwidth]{img/refmap.png}
+\tikzoverlay[text width=0.98\paperwidth] at (-1cm,2cm) {
+  \begin{tabular}{cc}
+	\includegraphics[width=0.45\paperwidth]{img/sift_map.png}&
+	\includegraphics[width=0.45\paperwidth]{img/surf_map.png}
+  \end{tabular}
 };
-\tikzoverlay[text width=0.98\paperwidth] at (-1cm,1cm) {
-  \begin{tabular}{ccc}
-	JPEG & 	JPEG XR & JPEG 2000 \\
-	\includegraphics[width=0.3\paperwidth,height=2.9cm]{img/jpg_map.png}&
-	\includegraphics[width=0.3\paperwidth]{img/jxr_map.png}&
-	\includegraphics[width=0.3\paperwidth]{img/jp2_map.jpg}\\
+\end{frame}
+
+\begin{frame} {MAP over Ratio}
+\tikzoverlay[text width=0.98\paperwidth] at (-1cm,2cm) {
+  \begin{tabular}{cc}
+	\includegraphics[width=0.45\paperwidth]{img/orb_map.png}&
+	\includegraphics[width=0.45\paperwidth]{img/phow_map.png}
   \end{tabular}
 };
 \end{frame}
