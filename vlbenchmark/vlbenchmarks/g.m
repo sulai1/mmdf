@@ -4,7 +4,6 @@ bar(2,log(211.708543),'g');
 hold on
 bar(3,log(1756.961474),'b');
 
-<<<<<<< HEAD
 figure(1);clf;
 raw = 3.916590280466127e+05;
 bar(1,log2(raw),'r');
@@ -44,15 +43,3 @@ ax.YTick = t;
 ax.FontSize = 16;
 ylabel('ratio');
 
-% ax2= axes('Position',ax.Position,'YAxisLocation','right',...
-%     'color','none');
-% ax2.YTick = log([jp2,jxr,jpg,raw]);
-=======
-ax = gca;
-ax.XTick = 1:3;
-
-t = linspace(2, 6, 5);
-ax.YTick = t.*2;
-ax.YTickLabel = 10.^t;
-ax.XTickLabel = {'jpg','j2p','jxr'};
->>>>>>> eda4c1669dd4247f3d4545871463de02e6b592fd
