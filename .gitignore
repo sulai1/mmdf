@@ -2,7 +2,6 @@
 /slides/*.aux
 /slides/*.log
 /slides/*.nav
-/slides/slides.pdf
 *.toc
 *.synctex.gz
 /*.asv
