@@ -131,20 +131,10 @@ classdef Converter
                    delete(dst);
                end
             end
+            avgSize = mean(sizes);
             fid = fopen(fullfile(dstDir,'sizes.txt'),'w');
-            for i=1: nrimg
-                fprintf(fid,'%f\n',sizes(i));
-            end
+            fprintf(fid,'%f',avgSize(0));
             fclose(fid); 
-            sum = 0;
-            count = 0;
-            for i=1:nrimg
-                if sizes(i)~=0
-                    count = count +1;
-                end
-                sum = sum + sizes(i);
-            end
-            avgSize = sum/count;
         end
     end
 end

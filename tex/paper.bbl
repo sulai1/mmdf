@@ -1,0 +1,44 @@
+\begin{thebibliography}{1}
+
+\bibitem{surf}
+Herbert Bay, Tinne Tuytelaars, and Luc~Van Gool.
+\newblock Surf: Speeded up robust features.
+\newblock In {\em Ninth European Conference on Computer Vision 2006}.
+
+\bibitem{phow}
+Anna Bosch, Andrew Zisserman, and Xavier Munoz.
+\newblock Image classification using random forests and ferns.
+\newblock In {\em IEEE International Conference on Computer Vision 2007}.
+
+\bibitem{inria}
+Herv\'e J\'egou, Matthijs Douze, and Cordelia Schmid.
+\newblock Exploiting descriptor distances for precise image search.
+\newblock INRIA, inria-00602325v2, 2011.
+
+\bibitem{lowe}
+David~G. Lowe.
+\newblock Distinctive image features from scale-invariant keypoints.
+\newblock International Journal of Computer Vision, 2004.
+
+\bibitem{philbin}
+James Philbin, Ondrej Chum, Michael Isard, Josef Sivic, and Andrew Zisserman.
+\newblock Object retrieval with large vocabularies and fast spatial matching.
+\newblock Department of Engineering Science, University of Oxford,Microsoft
+  Research, Silicon Valley, 2007.
+
+\bibitem{fast1}
+Edward Rosten and Tom Drummond.
+\newblock Machine learning for high speed corner detection.
+\newblock In {\em 9th European Conference on Computer Vision 2006}.
+
+\bibitem{fast2}
+Edward Rosten, Reid Porter, and Tom Drummond.
+\newblock Faster and better: a machine learning approach to corner detection.
+\newblock In {\em IEEE Trans. Pattern Analysis and Machine Intelligence 2010}.
+
+\bibitem{orb}
+Ethan Rublee, Vincent Rabaud, Kurt Konolige, and Gary Bradski.
+\newblock Orb: an efficient alternative to sift or surf.
+\newblock In {\em International Conference on Computer Vision 2011}.
+
+\end{thebibliography}

@@ -1,10 +1,9 @@
 dataDir = 'vlbenchmark\vlbenchmarks\data\datasets\vggRetrievalDataset';
-resDir = 'vlbenchmark\vlbenchmarks\res';
-srcname = 't20';
+srcname = 't';
 
 ratio = 0.5;
 
-formats = {'jpg'};
+formats = {'jxr'};
 avgSize = 4e+05;
 size = inf;
 
@@ -20,14 +19,7 @@ for n=1:length(formats)
         Duration(index) = cputime-d;
         AvgSize(index) = avgSize;
         gtDir = [dstDir,'_gt'];
-        mkdir(gtDir);
-        copyfile(fullfile(dataDir,[srcname,'_gt/*']), gtDir);
         ratio = ratio/2;
         index = index+1;
     end
 end
-t = table;
-t.Name = Name';
-t.Duration = Duration';
-t.AvgSize = AvgSize';
-writetable(t, fullfile(resDir,'convert.txt'));
