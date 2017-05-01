@@ -525,7 +525,7 @@ classdef RetrievalBenchmark < benchmarks.GenericBenchmark ...
     function deps = getDependencies(obj)
       import helpers.*;
       deps = {Installer(),benchmarks.helpers.Installer(),...
-        VlFeatInstaller('0.9.15'),YaelInstaller()};
+        VlFeatInstaller('0.9.15')};
     end
   end
 

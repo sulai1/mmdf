@@ -19,16 +19,20 @@ classdef PHOWDetector < localFeatures.CVDetector
             obj.Name = ['PHOW-',obj.Opts.Color];
         end
         % extract the descriptors and convert them
-        function [frames descriptors] = extractDescriptors(obj, imagePath, f)
+        function [frames, descriptors] = extractDescriptors(obj, imagePath, f)
             [frames, descriptors] = obj.extract(imagePath);
         end
         
         function [features, descriptors] = extract(obj, imagePath)
-            import cv.*
-            if strcmp(obj.Opts.Color,'gray')
-                img = single(rgb2gray(imread(imagePath)));
+            if strfind(imagePath, '.jxr')
+                img = convert.Converter.readJXR(imagePath);
             else
-                img = single(imread(imagePath));
+                img = imread(imagePath);
+            end
+            if strcmp(obj.Opts.Color,'gray')
+                img = single(rgb2gray(img));
+            else
+                img = single(img);
             end
             [features, descriptors] = vl_phow(img,... 
             'Sizes', obj.Opts.Sizes, ...

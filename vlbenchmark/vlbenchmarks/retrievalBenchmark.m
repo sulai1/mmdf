@@ -1,4 +1,4 @@
-function [mAP, avgDescsNum, queriesAp,prc] = retrievalBenchmark( name, featExtractors, nSteps)
+function [mAP, avgDescsNum, queriesAp,prc] = retrievalBenchmark( dataset, featExtractors, nSteps)
     %function [mAP queriesAp] = retrievalDemo(resultsPath)
     % RETRIEVALDEMO Demonstrates how to run the retrieval benchmark
     %   RETRIEVALDEMO() Runs the repeatability demo.
@@ -35,18 +35,7 @@ function [mAP, avgDescsNum, queriesAp,prc] = retrievalBenchmark( name, featExtra
     % Parameter 'MaxNumImagesPerSearch' sets in how big chunks the dataset
     % should be divided for the KNN search.
     retBenchmark = RetrievalBenchmark('MaxNumImagesPerSearch',50);
-
-    % Define the dataset which will be used for the benchmark. In this case we
-    % will use 'oxbuild' dataset (Philbin, CVPR07) which originally consists
-    % from 5k images. In order to compute the results in a reasonable time, we
-    % will select only subset of the images. Wrapper of this data/home/sulaiset uniformly
-    dataset = VggRetrievalDataset('Category',name,...
-                                  'GoodImagesNum',30,...
-                                  'OkImagesNum',30,...
-                                  'JunkImagesNum',30,...
-                                  'BadImagesNum',50);
-                              
-                              
+    
     % Run the test for all defined feature extractors
     % Run the test for all defined feature extractors
     for d=1:numel(featExtractors)
@@ -54,7 +43,7 @@ function [mAP, avgDescsNum, queriesAp,prc] = retrievalBenchmark( name, featExtra
       [mAP(d) info(d)] =...
         retBenchmark.testFeatureExtractor(featExtractors{d}, dataset);
         e = cputime - t1;
-        fprintf('retrieval benchmark : %s \nfeature extractor : %s\n finished after %d sec.\n',name,featExtractors{d}.Name,e);
+        fprintf('retrieval benchmark : %s \nfeature extractor : %s\n finished after %d sec.\n',dataset.ImagesDir,featExtractors{d}.Name,e);
     end
 
 

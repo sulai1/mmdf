@@ -79,34 +79,7 @@ classdef YaelInstaller < helpers.GenericInstaller
     end
 
     function compile(obj)
-      import helpers.*;
-      if obj.isCompiled()
-        return;
-      end
-      if ismember(computer,{'PCWIN','PCWIN64'})
-        error('Yael library is not supported on your platform.');
-      end
-      fprintf('Compiling Yael\n');
-
-      errHelpCmd = sprintf('Compile Yael by hand, located in %s\n',...
-        obj.InstallDir);
-      prevDir = pwd;
-      cd(fullfile(pwd,obj.InstallDir));
-      [status msg] = system(obj.ConfigCmd,'-echo');
-      if status ~= 0 
-        cd(prevDir);
-        error('Yael "%s" failed:\n%s\n%s\n',obj.ConfigCmd,msg,errHelpCmd);
-        return;
-      end
-      cd(fullfile(prevDir,obj.MexDir));
-      [status msg] = system(obj.MexMakeCmd,'-echo');
-      if status ~= 0 
-        cd(prevDir);
-        error('Yael "%s" failed:\n%s\n%s\n',obj.MexMakeCmd,msg,errHelpCmd);
-        return;
-      end
-      cd(prevDir);
-      obj.setup();
+     
     end
 
     function res = isCompiled(obj)

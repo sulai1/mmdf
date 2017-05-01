@@ -50,4 +50,5 @@ import localFeatures.*
             detNames{d} = featExtractors{d}.Name;
        end
     end
+    imread
     plotRes;

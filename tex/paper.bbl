@@ -1,44 +1,501 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{surf}
-Herbert Bay, Tinne Tuytelaars, and Luc~Van Gool.
-\newblock Surf: Speeded up robust features.
-\newblock In {\em Ninth European Conference on Computer Vision 2006}.
+\sortlist[entry]{nyt/global/}
+  \entry{arya_search}{article}{}
+    \name{author}{5}{}{%
+      {{hash=AS}{%
+         family={Arya},
+         familyi={A\bibinitperiod},
+         given={Sunil},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MDM}{%
+         family={Mount},
+         familyi={M\bibinitperiod},
+         given={David\bibnamedelima M},
+         giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=NNS}{%
+         family={Netanyahu},
+         familyi={N\bibinitperiod},
+         given={Nathan\bibnamedelima S},
+         giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Silverman},
+         familyi={S\bibinitperiod},
+         given={Ruth},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=WAY}{%
+         family={Wu},
+         familyi={W\bibinitperiod},
+         given={Angela\bibnamedelima Y},
+         giveni={A\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{AS+1}
+    \strng{fullhash}{ASMDMNNSSRWAY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ary+98}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{number}{6}
+    \field{pages}{891\bibrangedash 923}
+    \field{title}{An optimal algorithm for approximate nearest neighbor
+  searching fixed dimensions}
+    \field{volume}{45}
+    \field{journaltitle}{Journal of the ACM (JACM)}
+    \field{year}{1998}
+  \endentry
 
-\bibitem{phow}
-Anna Bosch, Andrew Zisserman, and Xavier Munoz.
-\newblock Image classification using random forests and ferns.
-\newblock In {\em IEEE International Conference on Computer Vision 2007}.
+  \entry{surf}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=BH}{%
+         family={Bay},
+         familyi={B\bibinitperiod},
+         given={Herbert},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=TT}{%
+         family={Tuytelaars},
+         familyi={T\bibinitperiod},
+         given={Tinne},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=GLV}{%
+         family={Gool},
+         familyi={G\bibinitperiod},
+         given={Luc\bibnamedelima Van},
+         giveni={L\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BHTTGLV1}
+    \strng{fullhash}{BHTTGLV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BTG}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{Ninth European Conference on Computer Vision 2006}
+    \field{title}{SURF: Speeded Up Robust Features}
+  \endentry
 
-\bibitem{inria}
-Herv\'e J\'egou, Matthijs Douze, and Cordelia Schmid.
-\newblock Exploiting descriptor distances for precise image search.
-\newblock INRIA, inria-00602325v2, 2011.
+  \entry{phow}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=BA}{%
+         family={Bosch},
+         familyi={B\bibinitperiod},
+         given={Anna},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={Zisserman},
+         familyi={Z\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MX}{%
+         family={Munoz},
+         familyi={M\bibinitperiod},
+         given={Xavier},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BAZAMX1}
+    \strng{fullhash}{BAZAMX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BZM}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{IEEE International Conference on Computer Vision 2007}
+    \field{title}{Image Classification using Random Forests and Ferns}
+  \endentry
 
-\bibitem{lowe}
-David~G. Lowe.
-\newblock Distinctive image features from scale-invariant keypoints.
-\newblock International Journal of Computer Vision, 2004.
+  \entry{calonder2010brief}{article}{}
+    \name{author}{4}{}{%
+      {{hash=CM}{%
+         family={Calonder},
+         familyi={C\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LV}{%
+         family={Lepetit},
+         familyi={L\bibinitperiod},
+         given={Vincent},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Strecha},
+         familyi={S\bibinitperiod},
+         given={Christoph},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=FP}{%
+         family={Fua},
+         familyi={F\bibinitperiod},
+         given={Pascal},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{CM+1}
+    \strng{fullhash}{CMLVSCFP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Cal+10}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{pages}{778\bibrangedash 792}
+    \field{title}{Brief: Binary robust independent elementary features}
+    \field{journaltitle}{Computer Vision--ECCV 2010}
+    \field{year}{2010}
+  \endentry
 
-\bibitem{philbin}
-James Philbin, Ondrej Chum, Michael Isard, Josef Sivic, and Andrew Zisserman.
-\newblock Object retrieval with large vocabularies and fast spatial matching.
-\newblock Department of Engineering Science, University of Oxford,Microsoft
-  Research, Silicon Valley, 2007.
+  \entry{donoser2006mser}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=DM}{%
+         family={Donoser},
+         familyi={D\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BH}{%
+         family={Bischof},
+         familyi={B\bibinitperiod},
+         given={Horst},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{DMBH1}
+    \strng{fullhash}{DMBH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{DB06}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{booktitle}{Computer Vision and Pattern Recognition, 2006 IEEE
+  Computer Society Conference on}
+    \field{pages}{553\bibrangedash 560}
+    \field{title}{Efficient maximally stable extremal region (MSER) tracking}
+    \field{volume}{1}
+    \field{year}{2006}
+  \endentry
 
-\bibitem{fast1}
-Edward Rosten and Tom Drummond.
-\newblock Machine learning for high speed corner detection.
-\newblock In {\em 9th European Conference on Computer Vision 2006}.
+  \entry{sift_jpg}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=EM}{%
+         family={Elhoseiny},
+         familyi={E\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SB}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sudol},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MD}{%
+         family={McKinnon},
+         familyi={M\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{feature extraction;image coding;image recognition;transforms;JPEG
+  compression;SIFT matching performance;SIFT recognition;feature
+  detection;image matching;low bitrate benefits;mobile visual
+  search;photogrammetry;scale invariant feature transforms;Image
+  Matching;JPEG;Low Bitrate;Mobile Visual Search;SIFT}
+    \strng{namehash}{EM+1}
+    \strng{fullhash}{EMSBSJMD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Elh+13}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{booktitle}{2013 IEEE International Conference on Image Processing}
+    \verb{doi}
+    \verb 10.1109/ICIP.2013.6738754
+    \endverb
+    \field{issn}{1522-4880}
+    \field{pages}{3657\bibrangedash 3661}
+    \field{title}{Low-bitrate benefits of JPEG compression on sift recognition}
+    \field{year}{2013}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
 
-\bibitem{fast2}
-Edward Rosten, Reid Porter, and Tom Drummond.
-\newblock Faster and better: a machine learning approach to corner detection.
-\newblock In {\em IEEE Trans. Pattern Analysis and Machine Intelligence 2010}.
+  \entry{harris_corner}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HC}{%
+         family={Harris},
+         familyi={H\bibinitperiod},
+         given={Chris},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Stephens},
+         familyi={S\bibinitperiod},
+         given={Mike},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Citeseer}%
+    }
+    \strng{namehash}{HCSM1}
+    \strng{fullhash}{HCSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{HS88}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{booktitle}{Alvey vision conference}
+    \field{number}{50}
+    \field{pages}{10\bibrangedash 5244}
+    \field{title}{A combined corner and edge detector.}
+    \field{volume}{15}
+    \field{year}{1988}
+  \endentry
 
-\bibitem{orb}
-Ethan Rublee, Vincent Rabaud, Kurt Konolige, and Gary Bradski.
-\newblock Orb: an efficient alternative to sift or surf.
-\newblock In {\em International Conference on Computer Vision 2011}.
+  \entry{inria}{report}{}
+    \name{author}{3}{}{%
+      {{hash=JH}{%
+         family={J\'egou},
+         familyi={J\bibinitperiod},
+         given={Herv\'e},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=DM}{%
+         family={Douze},
+         familyi={D\bibinitperiod},
+         given={Matthijs},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Schmid},
+         familyi={S\bibinitperiod},
+         given={Cordelia},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JHDMSC1}
+    \strng{fullhash}{JHDMSC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{JDS11}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{howpublished}{INRIA, inria-00602325v2}
+    \field{title}{Exploiting descriptor distances for precise image search}
+    \field{type}{Research Report}
+    \field{year}{2011}
+  \endentry
 
-\end{thebibliography}
+  \entry{lai2013block}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=LS}{%
+         family={Lai},
+         familyi={L\bibinitperiod},
+         given={ShiYue},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BR}{%
+         family={B{\"o}hme},
+         familyi={B\bibinitperiod},
+         given={Rainer},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{LSBR1}
+    \strng{fullhash}{LSBR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{LB13}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{booktitle}{Acoustics, Speech and Signal Processing (ICASSP), 2013
+  IEEE International Conference on}
+    \field{pages}{3028\bibrangedash 3032}
+    \field{title}{Block convergence in repeated transform coding: JPEG-100
+  forensics, carbon dating, and tamper detection}
+    \field{year}{2013}
+  \endentry
+
+  \entry{lowe_sift}{article}{}
+    \name{author}{1}{}{%
+      {{hash=LDG}{%
+         family={Lowe},
+         familyi={L\bibinitperiod},
+         given={David\bibnamedelima G},
+         giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{LDG1}
+    \strng{fullhash}{LDG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Low04}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{2}
+    \field{pages}{91\bibrangedash 110}
+    \field{title}{Distinctive image features from scale-invariant keypoints}
+    \field{volume}{60}
+    \field{journaltitle}{International journal of computer vision}
+    \field{year}{2004}
+  \endentry
+
+  \entry{philbin}{report}{}
+    \name{author}{5}{}{%
+      {{hash=PJ}{%
+         family={Philbin},
+         familyi={P\bibinitperiod},
+         given={James},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CO}{%
+         family={Chum},
+         familyi={C\bibinitperiod},
+         given={Ondrej},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=IM}{%
+         family={Isard},
+         familyi={I\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sivic},
+         familyi={S\bibinitperiod},
+         given={Josef},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={Zisserman},
+         familyi={Z\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PJ+1}
+    \strng{fullhash}{PJCOIMSJZA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Phi+07}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{howpublished}{Department of Engineering Science, University of
+  Oxford,Microsoft Research, Silicon Valley}
+    \field{title}{Object retrieval with large vocabularies and fast spatial
+  matching}
+    \field{type}{Research Report}
+    \field{year}{2007}
+  \endentry
+
+  \entry{fast1}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RE}{%
+         family={Rosten},
+         familyi={R\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=DT}{%
+         family={Drummond},
+         familyi={D\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{REDT1}
+    \strng{fullhash}{REDT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{RD}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{9th European Conference on Computer Vision 2006}
+    \field{title}{Machine learning for high speed corner detection}
+  \endentry
+
+  \entry{orb}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=RE}{%
+         family={Rublee},
+         familyi={R\bibinitperiod},
+         given={Ethan},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=RV}{%
+         family={Rabaud},
+         familyi={R\bibinitperiod},
+         given={Vincent},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=KK}{%
+         family={Konolige},
+         familyi={K\bibinitperiod},
+         given={Kurt},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=BG}{%
+         family={Bradski},
+         familyi={B\bibinitperiod},
+         given={Gary},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RE+1}
+    \strng{fullhash}{RERVKKBG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Rub+}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{International Conference on Computer Vision 2011}
+    \field{title}{ORB: an efficient alternative to SIFT or SURF}
+  \endentry
+\endsortlist
+\endinput

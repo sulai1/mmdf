@@ -32,8 +32,13 @@ classdef VlFeatSift < localFeatures.GenericLocalFeatureExtractor & ...
       import helpers.*;
       [frames descriptors] = obj.loadFeatures(imagePath,nargout > 1);
       if numel(frames) > 0; return; end;
-      img = imread(imagePath);
+      if strfind(imagePath, '.jxr')
+        img = convert.Converter.readJXR(imagePath);
+      else
+        img = imread(imagePath);
+      end
       if(size(img,3)>1), img = rgb2gray(img); end
+      
       img = single(img); % If not already in uint8, then convert
       startTime = tic;
       if nargout == 1
@@ -50,7 +55,7 @@ classdef VlFeatSift < localFeatures.GenericLocalFeatureExtractor & ...
       obj.storeFeatures(imagePath, frames, descriptors);
     end
 
-    function [frames descriptors] = extractDescriptors(obj, imagePath, frames)
+    function [frames, descriptors] = extractDescriptors(obj, imagePath, frames)
       % extractDescriptor Extract SIFT descriptors of disc frames
       %   [DFRAMES DESCRIPTORS] = obj.extractDescriptor(IMG_PATH,
       %   FRAMES) Extracts SIFT descriptors DESCRIPTPORS of disc
@@ -77,10 +82,11 @@ classdef VlFeatSift < localFeatures.GenericLocalFeatureExtractor & ...
         frames = [frames; zeros(1,size(frames,2))];
       end
       % Compute the descriptors (using scale space).
-      [frames, descriptors] = vl_sift(img,'Frames',frames,...
+      [frames, d] = vl_sift(img,'Frames',frames,...
         obj.VlSiftArguments{:});
       elapsedTime = toc(startTime);
       obj.debug('Descriptors computed in %gs',elapsedTime);
+      descriptors = d.';
     end
 
     function sign = getSignature(obj)

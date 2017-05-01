@@ -1,19 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: paper.aux
-The style file: plain.bst
-Database file #1: paper.bib
-Warning--entry type for "inria" isn't style-file defined
---line 1 of file paper.bib
-Warning--entry type for "philbin" isn't style-file defined
---line 10 of file paper.bib
-Warning--entry type for "lowe" isn't style-file defined
---line 18 of file paper.bib
-Name 2 in "Edward Rosten and Reid Porter, and Tom Drummond" has a comma at the end for entry fast2
-while executing---line 1049 of file plain.bst
-Warning--empty year in surf
-Warning--empty year in phow
-Warning--empty year in fast1
-Name 2 in "Edward Rosten and Reid Porter, and Tom Drummond" has a comma at the end for entry fast2
-while executing---line 1090 of file plain.bst
-Warning--empty year in fast2
-Warning--empty year in orb
-(There were 2 error messages)
+The style file: biblatex.bst
+Database file #1: paper-blx.bib
+Database file #2: paper.bib
+Biblatex version: 3.3

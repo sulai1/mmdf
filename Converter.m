@@ -20,6 +20,10 @@ classdef Converter
         end
         
         %% parallel conversion depends on unique id
+        %% in : the input image
+        %% out : the output image
+        %% id : for paralell access
+        %% quality : the quality [0.0-1.0]
         function parconvert(in,out,id,quality)
            	tmpid = sprintf('tmp_%d.bmp',id);
             
@@ -29,7 +33,7 @@ classdef Converter
             if(outtype==Converter.JXR)
                 if(in(end-3:end)==Converter.BMP)
                     Converter.convertJXR(in,out,quality);
-                else % workaround for ~bmp -> jxr
+                else % workaround for jxr : jpg -> bmp -> jxr
                     Converter.convertMagick(in,tmpid,quality);
                     Converter.convertJXR(tmpid,out,quality);
                     delete(tmpid);
@@ -71,14 +75,19 @@ classdef Converter
             Converter.parConvert2size(in,out,0, extent);
         end
         
-        function parConvert2size(in,out,id,extent)
-            max = 0.5;
-            min = 0;
-            if extent < 500
-               extent = 500;
+        function quality =  parConvert2size(in,out,id,extent, quality)
+            max = 1.0;
+            min = 0.0;
+            if nargin < 5
+                quality = 0.5;
+            else
+                if(quality)
+            end
+            if extent < 5000
+               extent = 5000;
             end
             while(abs(max-min)>0.01)%there are only 100 quality levels
-                if(max>1)
+                if(quality>1)
                     disp('err')
                 end
                 Converter.parconvert(in, out,id, max);
@@ -96,10 +105,11 @@ classdef Converter
                     min=max;
                 end
             end
+            quality = max;
         end
         
-        %Convert the database contained in the imgDir and gtDir the given
-        %directory.Therefore it compresses to the specified format so that
+        %Convert the database contained in the given directory.
+        %Therefore it compresses to the specified format so that
         %it does not extend the given size. If the destination format is
         %not jpg the file is compressed back to lossless jpg so the
         %retrieval demo can handle it.
@@ -124,12 +134,6 @@ classdef Converter
                fprintf('converting: %d/%d. %s -> %d bytes\n', ...
                     i, nrimg, dst, listing(1).bytes);
                sizes(i)=listing(1).bytes;
-               %if we are not compressing to jpg we have to compress it
-               %back lossless for compatibility with the retrieval demo
-               if ~strcmp(dstFormat,'jpg')
-                   Converter.parconvert(dst,asjpg,i,1.0);
-                   delete(dst);
-               end
             end
             avgSize = mean(sizes);
             fid = fopen(fullfile(dstDir,'sizes.txt'),'w');

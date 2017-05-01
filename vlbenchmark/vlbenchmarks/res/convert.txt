@@ -1,3 +1,0 @@
-Name,Duration,AvgSize
-jpg_0.500000,0.03125,-1
-jpg_0.250000,0,-1

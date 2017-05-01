@@ -55,14 +55,14 @@ classdef CVDetector < helpers.GenericInstaller ...
             % If you want use cache, in the first step, try to load features from
             % the cache. The third argument of loadFeatures tells whether to load
             % descriptors as well.
-            [frames descriptors] = obj.loadFeatures(imagePath,nargout > 1);
+            [frames, descriptors] = obj.loadFeatures(imagePath,nargout > 1);
             % If features loaded, we are done
             
             if numel(frames) > 0; return; end;
             % Get the size of the image
             
             
-            [frames descriptors] = extractDescriptors(obj, imagePath, []);
+            [frames, descriptors] = extractDescriptors(obj, imagePath, []);
             
             timeElapsed = toc(startTime);
             obj.debug(sprintf('Features from image %s computed in %gs',...
